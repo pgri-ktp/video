@@ -544,6 +544,26 @@
       <!-- Formulir Penilaian (Aktif setelah Login Juri) -->
       <form id="judgingForm" onsubmit="handleSubmit(event)" class="hidden space-y-6">
 
+        <!-- Banner Akses Bahan Video Penjurian (Khusus Juri) -->
+        <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white rounded-2xl p-4 sm:p-5 shadow-sm border border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-3 text-center sm:text-left">
+            <div class="w-11 h-11 bg-amber-400 text-slate-950 rounded-xl flex items-center justify-center font-bold text-xl shrink-0">
+              <i class="fa-brands fa-google-drive"></i>
+            </div>
+            <div>
+              <h3 class="font-extrabold text-sm sm:text-base text-white">Bahan & Video Pembelajaran Peserta</h3>
+              <p class="text-xs text-slate-300">Buka dan putar video serta modul ajar peserta dari seluruh ranting sebelum memberikan penilaian.</p>
+            </div>
+          </div>
+          <a href="https://drive.google.com/drive/folders/1w4_-OmND5Q8YhOCosw6r29W0quOVr7nePT_9sI_k-L_PiFRTScPB9_wmkFjMmiJz5XSXGYCk?usp=sharing" 
+            target="_blank" rel="noopener noreferrer"
+            class="px-5 py-2.5 bg-amber-400 hover:bg-amber-300 text-slate-950 font-black rounded-xl text-xs shadow-md transition flex items-center gap-2 whitespace-nowrap active:scale-95">
+            <i class="fa-solid fa-play"></i>
+            <span>AKSES VIDEO PEMBELAJARAN</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+          </a>
+        </div>
+
         <!-- SECTION 1: Identitas Penjurian -->
         <section class="bg-white rounded-2xl p-6 sm:p-7 shadow-sm border border-slate-200">
           <div class="flex items-center gap-3 border-b border-slate-100 pb-4 mb-5">
