@@ -190,14 +190,22 @@
 
     <!-- Navigation Tabs Menu -->
     <div class="max-w-5xl mx-auto px-4 mt-2">
-      <div class="flex border-b border-red-500/50">
+      <div class="flex border-b border-red-500/50 overflow-x-auto">
+        <!-- Tab 1: Petunjuk Teknis (Paling Kiri - All Access) -->
+        <button id="tabBtnJuknis" onclick="switchTab('juknis')" 
+          class="flex items-center gap-2 px-5 sm:px-6 py-3 text-xs sm:text-sm font-bold border-b-4 border-amber-400 text-white bg-white/10 rounded-t-xl transition shrink-0">
+          <i class="fa-solid fa-book-open"></i> Petunjuk Teknis
+          <span class="ml-1 text-[10px] bg-emerald-600/90 px-2 py-0.5 rounded-full text-white font-bold"><i class="fa-solid fa-globe"></i> Publik</span>
+        </button>
+        <!-- Tab 2: Form Penilaian Juri -->
         <button id="tabBtnForm" onclick="switchTab('form')" 
-          class="flex items-center gap-2 px-6 py-3 text-sm font-bold border-b-4 border-amber-400 text-white bg-white/10 rounded-t-xl transition">
+          class="flex items-center gap-2 px-5 sm:px-6 py-3 text-xs sm:text-sm font-bold border-b-4 border-transparent text-red-200 hover:text-white hover:bg-white/5 rounded-t-xl transition shrink-0">
           <i class="fa-solid fa-file-pen"></i> Form Penilaian Juri 
           <span id="tabLockBadge" class="ml-1 text-[10px] bg-red-950/80 px-2 py-0.5 rounded-full text-amber-300 font-bold"><i class="fa-solid fa-lock"></i> Khusus Juri</span>
         </button>
+        <!-- Tab 3: Rekapitulasi Pemenang -->
         <button id="tabBtnRekap" onclick="switchTab('rekap')" 
-          class="flex items-center gap-2 px-6 py-3 text-sm font-bold border-b-4 border-transparent text-red-200 hover:text-white hover:bg-white/5 rounded-t-xl transition">
+          class="flex items-center gap-2 px-5 sm:px-6 py-3 text-xs sm:text-sm font-bold border-b-4 border-transparent text-red-200 hover:text-white hover:bg-white/5 rounded-t-xl transition shrink-0">
           <i class="fa-solid fa-ranking-star"></i> Rekapitulasi Pemenang
           <span id="tabLockBadgeRekap" class="ml-1 text-[10px] bg-red-950/80 px-2 py-0.5 rounded-full text-amber-300 font-bold"><i class="fa-solid fa-lock"></i> Terbatas</span>
         </button>
@@ -211,110 +219,392 @@
   <!-- Main Container -->
   <main class="max-w-5xl w-full mx-auto px-4 py-8 flex-1">
 
+    <!-- VIEW 0: PETUNJUK TEKNIS (ALL ACCESS - SESUAI JUKNIS RESMI) -->
+    <div id="viewJuknis" class="space-y-6">
+      
+      <!-- Header Dokumen Juknis -->
+      <div class="bg-gradient-to-r from-red-900 via-red-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white shadow-md relative overflow-hidden border border-red-700/50">
+        <div class="absolute -right-6 -bottom-6 opacity-10 pointer-events-none">
+          <i class="fa-solid fa-scroll text-[180px]"></i>
+        </div>
+        <div class="relative z-10">
+          <span class="inline-block px-3 py-1 bg-amber-400 text-slate-950 rounded-full text-xs font-black uppercase tracking-wider mb-2">
+            Dokumen Resmi Panitia
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-black tracking-tight">PETUNJUK TEKNIS</h2>
+          <h3 class="text-lg sm:text-xl font-bold text-amber-300 mt-1">KATAPANG TEACHING INNOVATION AWARD 2026</h3>
+          <p class="text-red-100 text-sm mt-1 font-medium">Kompetisi Video Praktik Pembelajaran Inovatif Dalam Rangka Memperingati Hari Guru Nasional Tahun 2026</p>
+          <div class="mt-4 inline-block bg-white/10 backdrop-blur-md px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold border border-white/20 italic text-amber-200">
+            "Guru Berinovasi, Pembelajaran Mendalam, Menginspirasi Pendidikan."
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Index Box -->
+      <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm flex flex-wrap gap-2 text-xs font-bold text-slate-700">
+        <a href="#juknis-1" class="px-3 py-1.5 bg-slate-100 hover:bg-red-50 hover:text-red-700 rounded-lg transition">I. Ketentuan Peserta</a>
+        <a href="#juknis-2" class="px-3 py-1.5 bg-slate-100 hover:bg-red-50 hover:text-red-700 rounded-lg transition">II. Ketentuan Karya Video</a>
+        <a href="#juknis-3" class="px-3 py-1.5 bg-slate-100 hover:bg-red-50 hover:text-red-700 rounded-lg transition">III. Ketentuan Teknis Video</a>
+        <a href="#juknis-4" class="px-3 py-1.5 bg-slate-100 hover:bg-red-50 hover:text-red-700 rounded-lg transition">IV. Peralatan Produksi</a>
+        <a href="#juknis-5" class="px-3 py-1.5 bg-slate-100 hover:bg-red-50 hover:text-red-700 rounded-lg transition">V. Kriteria Penilaian</a>
+        <a href="#juknis-6" class="px-3 py-1.5 bg-slate-100 hover:bg-red-50 hover:text-red-700 rounded-lg transition">VI. Pengumpulan Karya</a>
+        <a href="#juknis-7" class="px-3 py-1.5 bg-slate-100 hover:bg-red-50 hover:text-red-700 rounded-lg transition">VII. Tahapan Pelaksanaan</a>
+        <a href="#juknis-8" class="px-3 py-1.5 bg-slate-100 hover:bg-red-50 hover:text-red-700 rounded-lg transition">VIII. Diskualifikasi & Penutup</a>
+      </div>
+
+      <!-- I. KETENTUAN PESERTA -->
+      <section id="juknis-1" class="bg-white rounded-2xl p-6 sm:p-7 shadow-sm border border-slate-200">
+        <div class="flex items-center gap-3 border-b border-slate-100 pb-3 mb-4">
+          <div class="w-9 h-9 rounded-xl bg-red-100 text-red-700 flex items-center justify-center font-black text-sm">I</div>
+          <h3 class="text-base sm:text-lg font-bold text-slate-900">KETENTUAN PESERTA</h3>
+        </div>
+        <ol class="list-decimal list-inside space-y-2 text-xs sm:text-sm text-slate-700 leading-relaxed">
+          <li>Peserta adalah guru/anggota PGRI yang berada di wilayah Kecamatan Katapang.</li>
+          <li>Peserta berasal dari seluruh Ranting PGRI se-Kecamatan Katapang.</li>
+          <li>Peserta wajib memperoleh rekomendasi/pengesahan dari Ketua Ranting atau pimpinan satuan pendidikan.</li>
+          <li>Setiap peserta hanya dapat mengirimkan 1 (satu) karya video.</li>
+          <li>Karya harus merupakan karya asli peserta dan belum pernah menjadi juara pada kompetisi sejenis.</li>
+          <li>Peserta bertanggung jawab terhadap seluruh isi video, termasuk penggunaan gambar, musik, video, dan materi pendukung.</li>
+          <li>Peserta wajib memperoleh izin dokumentasi dari peserta didik yang tampil dalam video.</li>
+          <li>Peserta wajib mengikuti seluruh ketentuan dan jadwal yang ditetapkan panitia.</li>
+        </ol>
+      </section>
+
+      <!-- II. KETENTUAN KARYA VIDEO -->
+      <section id="juknis-2" class="bg-white rounded-2xl p-6 sm:p-7 shadow-sm border border-slate-200">
+        <div class="flex items-center gap-3 border-b border-slate-100 pb-3 mb-4">
+          <div class="w-9 h-9 rounded-xl bg-red-100 text-red-700 flex items-center justify-center font-black text-sm">II</div>
+          <h3 class="text-base sm:text-lg font-bold text-slate-900">KETENTUAN KARYA VIDEO</h3>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-700 mb-3">
+          Video harus menampilkan praktik pembelajaran nyata yang dilaksanakan oleh peserta sebagai guru. Video wajib memperlihatkan:
+        </p>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-slate-700 mb-5">
+          <li class="p-2.5 bg-slate-50 rounded-xl border border-slate-200 flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Guru melaksanakan proses pembelajaran</li>
+          <li class="p-2.5 bg-slate-50 rounded-xl border border-slate-200 flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Interaksi antara guru dan peserta didik</li>
+          <li class="p-2.5 bg-slate-50 rounded-xl border border-slate-200 flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Keterlibatan aktif peserta didik</li>
+          <li class="p-2.5 bg-slate-50 rounded-xl border border-slate-200 flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Penggunaan metode/strategi/model pembelajaran</li>
+          <li class="p-2.5 bg-slate-50 rounded-xl border border-slate-200 flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Penggunaan media pembelajaran dengan memanfaatkan IFP</li>
+          <li class="p-2.5 bg-slate-50 rounded-xl border border-slate-200 flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Unsur inovasi dalam pembelajaran</li>
+          <li class="p-2.5 bg-slate-50 rounded-xl border border-slate-200 sm:col-span-2 flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Penerapan prinsip Pembelajaran Mendalam</li>
+        </ul>
+
+        <div class="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl p-4 sm:p-5 border border-emerald-200">
+          <h4 class="font-extrabold text-sm text-emerald-950 mb-3 flex items-center gap-2">
+            <i class="fa-solid fa-brain text-emerald-600"></i> Prinsip Pembelajaran Mendalam (Deep Learning):
+          </h4>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+            <div class="bg-white p-3 rounded-lg border border-emerald-100 shadow-2xs">
+              <span class="font-black text-emerald-800 block mb-1">1. Mindful Learning</span>
+              <p class="text-slate-600">Peserta didik belajar secara sadar, fokus, aktif berpikir, mengeksplorasi masalah, dan melakukan refleksi diri.</p>
+            </div>
+            <div class="bg-white p-3 rounded-lg border border-emerald-100 shadow-2xs">
+              <span class="font-black text-emerald-800 block mb-1">2. Meaningful Learning</span>
+              <p class="text-slate-600">Pembelajaran dikaitkan erat dengan kehidupan nyata, pengalaman kontekstual, kebutuhan, atau permasalahan peserta didik.</p>
+            </div>
+            <div class="bg-white p-3 rounded-lg border border-emerald-100 shadow-2xs">
+              <span class="font-black text-emerald-800 block mb-1">3. Joyful Learning</span>
+              <p class="text-slate-600">Pembelajaran berlangsung aktif, positif, aman, komunikatif, kolaboratif, inklusif, dan menyenangkan.</p>
+            </div>
+          </div>
+          <p class="text-[11px] text-emerald-900 mt-3 italic">* Video dapat menggunakan jenjang, mata pelajaran, model, metode, media, maupun teknologi yang sesuai dengan bidang tugas peserta.</p>
+        </div>
+      </section>
+
+      <!-- III. KETENTUAN TEKNIS VIDEO -->
+      <section id="juknis-3" class="bg-white rounded-2xl p-6 sm:p-7 shadow-sm border border-slate-200">
+        <div class="flex items-center gap-3 border-b border-slate-100 pb-3 mb-4">
+          <div class="w-9 h-9 rounded-xl bg-red-100 text-red-700 flex items-center justify-center font-black text-sm">III</div>
+          <h3 class="text-base sm:text-lg font-bold text-slate-900">KETENTUAN TEKNIS VIDEO</h3>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5 text-xs sm:text-sm">
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <h4 class="font-bold text-slate-800 mb-2 flex items-center gap-2"><i class="fa-solid fa-clock text-red-600"></i> Durasi Video</h4>
+            <ul class="space-y-1 text-slate-600">
+              <li>• Minimal: <strong>7 menit</strong></li>
+              <li>• Maksimal: <strong>10 menit</strong></li>
+              <li>• Toleransi durasi maksimal: <strong>30 detik</strong></li>
+            </ul>
+          </div>
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <h4 class="font-bold text-slate-800 mb-2 flex items-center gap-2"><i class="fa-solid fa-film text-blue-600"></i> Format File & Kualitas</h4>
+            <ul class="space-y-1 text-slate-600">
+              <li>• Format file: <strong>MP4</strong></li>
+              <li>• Resolusi minimal: <strong>HD 720p</strong> (Disarankan: <strong>Full HD 1080p</strong>)</li>
+              <li>• Orientasi: <strong>Landscape (16:9)</strong></li>
+              <li>• Gambar harus jelas & stabil; audio vokal guru & murid terdengar baik.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Struktur Video -->
+        <h4 class="font-bold text-slate-800 text-xs sm:text-sm mb-2.5">Struktur Isi Video:</h4>
+        <div class="space-y-2.5 text-xs">
+          <div class="p-3 bg-red-50/50 rounded-xl border border-red-100">
+            <strong class="text-red-800 block mb-1">1. Pembuka (Minimal Menampilkan):</strong>
+            <p class="text-slate-600">Judul pembelajaran, Nama guru, Asal sekolah / Ranting, Mata pelajaran, Kelas / Fase, Materi pembelajaran.</p>
+          </div>
+          <div class="p-3 bg-blue-50/50 rounded-xl border border-blue-100">
+            <strong class="text-blue-800 block mb-1">2. Kegiatan Inti (Menampilkan Praktik Nyata):</strong>
+            <p class="text-slate-600">Proses pembelajaran interaktif guru dan siswa, strategi/metode, pemanfaatan IFP & media belajar, keaktifan murid, penerapan Mindful-Meaningful-Joyful, serta unsur inovasi teknologi.</p>
+          </div>
+          <div class="p-3 bg-amber-50/50 rounded-xl border border-amber-100">
+            <strong class="text-amber-800 block mb-1">3. Penutup:</strong>
+            <p class="text-slate-600">Dapat berisi refleksi pembelajaran, penguatan materi bermakna, kesimpulan, umpan balik konstruktif, serta tindak lanjut.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- IV. PERALATAN PRODUKSI -->
+      <section id="juknis-4" class="bg-white rounded-2xl p-6 sm:p-7 shadow-sm border border-slate-200">
+        <div class="flex items-center gap-3 border-b border-slate-100 pb-3 mb-4">
+          <div class="w-9 h-9 rounded-xl bg-red-100 text-red-700 flex items-center justify-center font-black text-sm">IV</div>
+          <h3 class="text-base sm:text-lg font-bold text-slate-900">PERALATAN PRODUKSI</h3>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-700 mb-3">
+          Peserta bebas menggunakan peralatan yang tersedia, antara lain: <em>Smartphone, Kamera digital, Tripod, Mikrofon, Lampu tambahan (Lighting), Gimbal, Aplikasi editing video, dan peralatan pendukung lainnya.</em>
+        </p>
+        <div class="p-3 bg-slate-50 border-l-4 border-amber-500 rounded-r-xl text-xs text-slate-600 italic">
+          <strong>Catatan:</strong> Tidak diwajibkan menggunakan kamera profesional. Yang terpenting adalah pembelajaran terlihat jelas, suara terdengar baik, dan video mudah dipahami.
+        </div>
+      </section>
+
+      <!-- V. KRITERIA PENILAIAN (TABEL LENGKAP 60:40) -->
+      <section id="juknis-5" class="bg-white rounded-2xl p-6 sm:p-7 shadow-sm border border-slate-200">
+        <div class="flex items-center gap-3 border-b border-slate-100 pb-3 mb-4">
+          <div class="w-9 h-9 rounded-xl bg-red-100 text-red-700 flex items-center justify-center font-black text-sm">V</div>
+          <div>
+            <h3 class="text-base sm:text-lg font-bold text-slate-900">KRITERIA PENILAIAN (TOTAL 100 POIN)</h3>
+            <p class="text-xs text-slate-500">Komposisi: 60% Aspek Pembelajaran & 40% Aspek Produksi Video</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- Tabel Aspek A -->
+          <div>
+            <h4 class="font-bold text-emerald-800 text-xs sm:text-sm mb-2 flex items-center justify-between">
+              <span>A. Aspek Pembelajaran</span>
+              <span class="bg-emerald-100 px-2 py-0.5 rounded text-emerald-800">60 Poin</span>
+            </h4>
+            <div class="overflow-x-auto rounded-xl border border-slate-200">
+              <table class="w-full text-xs text-left">
+                <thead class="bg-emerald-50 text-emerald-900 font-bold border-b border-slate-200">
+                  <tr>
+                    <th class="py-2.5 px-3 text-center w-10">No</th>
+                    <th class="py-2.5 px-3">Komponen Penilaian</th>
+                    <th class="py-2.5 px-3 text-center w-16">Bobot</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 text-slate-700">
+                  <tr><td class="py-2 px-3 text-center">1</td><td class="py-2 px-3">Perencanaan & kejelasan pembelajaran</td><td class="py-2 px-3 text-center font-bold">5</td></tr>
+                  <tr><td class="py-2 px-3 text-center">2</td><td class="py-2 px-3">Mindful Learning</td><td class="py-2 px-3 text-center font-bold">10</td></tr>
+                  <tr><td class="py-2 px-3 text-center">3</td><td class="py-2 px-3">Meaningful Learning</td><td class="py-2 px-3 text-center font-bold">10</td></tr>
+                  <tr><td class="py-2 px-3 text-center">4</td><td class="py-2 px-3">Joyful Learning</td><td class="py-2 px-3 text-center font-bold">10</td></tr>
+                  <tr><td class="py-2 px-3 text-center">5</td><td class="py-2 px-3">Interaktivitas & keterlibatan peserta didik</td><td class="py-2 px-3 text-center font-bold">10</td></tr>
+                  <tr><td class="py-2 px-3 text-center">6</td><td class="py-2 px-3">Inovasi strategi & media pembelajaran (IFP)</td><td class="py-2 px-3 text-center font-bold">10</td></tr>
+                  <tr><td class="py-2 px-3 text-center">7</td><td class="py-2 px-3">Refleksi & penguatan pembelajaran</td><td class="py-2 px-3 text-center font-bold">5</td></tr>
+                  <tr class="bg-emerald-50/50 font-bold text-emerald-950"><td colspan="2" class="py-2 px-3 text-right">TOTAL ASPEK A</td><td class="py-2 px-3 text-center">60</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Tabel Aspek B -->
+          <div>
+            <h4 class="font-bold text-blue-800 text-xs sm:text-sm mb-2 flex items-center justify-between">
+              <span>B. Aspek Produksi Video</span>
+              <span class="bg-blue-100 px-2 py-0.5 rounded text-blue-800">40 Poin</span>
+            </h4>
+            <div class="overflow-x-auto rounded-xl border border-slate-200">
+              <table class="w-full text-xs text-left">
+                <thead class="bg-blue-50 text-blue-900 font-bold border-b border-slate-200">
+                  <tr>
+                    <th class="py-2.5 px-3 text-center w-10">No</th>
+                    <th class="py-2.5 px-3">Komponen Penilaian</th>
+                    <th class="py-2.5 px-3 text-center w-16">Bobot</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 text-slate-700">
+                  <tr><td class="py-2 px-3 text-center">1</td><td class="py-2 px-3">Kualitas visual & pengambilan gambar</td><td class="py-2 px-3 text-center font-bold">10</td></tr>
+                  <tr><td class="py-2 px-3 text-center">2</td><td class="py-2 px-3">Kualitas audio</td><td class="py-2 px-3 text-center font-bold">8</td></tr>
+                  <tr><td class="py-2 px-3 text-center">3</td><td class="py-2 px-3">Pencahayaan (Lighting)</td><td class="py-2 px-3 text-center font-bold">6</td></tr>
+                  <tr><td class="py-2 px-3 text-center">4</td><td class="py-2 px-3">Editing & alur video</td><td class="py-2 px-3 text-center font-bold">8</td></tr>
+                  <tr><td class="py-2 px-3 text-center">5</td><td class="py-2 px-3">Kreativitas & estetika</td><td class="py-2 px-3 text-center font-bold">8</td></tr>
+                  <tr class="bg-blue-50/50 font-bold text-blue-950"><td colspan="2" class="py-2 px-3 text-right">TOTAL ASPEK B</td><td class="py-2 px-3 text-center">40</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VI. PENGUMPULAN KARYA -->
+      <section id="juknis-6" class="bg-white rounded-2xl p-6 sm:p-7 shadow-sm border border-slate-200">
+        <div class="flex items-center gap-3 border-b border-slate-100 pb-3 mb-4">
+          <div class="w-9 h-9 rounded-xl bg-red-100 text-red-700 flex items-center justify-center font-black text-sm">VI</div>
+          <h3 class="text-base sm:text-lg font-bold text-slate-900">PENGUMPULAN KARYA</h3>
+        </div>
+        <div class="space-y-3 text-xs sm:text-sm text-slate-700">
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+            <strong>1. Pendaftaran Peserta:</strong> Dilakukan melalui form: <a href="https://s.id/vUpMj" target="_blank" class="text-blue-600 font-bold hover:underline">https://s.id/vUpMj</a>
+          </div>
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+            <strong>2. Pengiriman Karya Video:</strong> Dikirimkan melalui tautan: <a href="https://s.id/ejqRV" target="_blank" class="text-blue-600 font-bold hover:underline">https://s.id/ejqRV</a>
+          </div>
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+            <strong>3. Format Nama File:</strong>
+            <code class="block mt-1 font-mono text-[11px] bg-slate-200 p-2 rounded text-slate-900 font-bold">
+              NAMA PESERTA_ASAL SEKOLAH_RANTING_JENJANG
+            </code>
+            <p class="text-[11px] text-slate-500 mt-1 italic">Contoh: KIKI WAHYUDI_SDN CIJAGRA 01_RANTING CILAMPENI_SD.mp4</p>
+          </div>
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+            <strong>4. Dokumen Penunjang Wajib:</strong> Selain video, peserta wajib mengunggah RPP / Modul Ajar, foto peralatan yang digunakan, foto proses perekaman, serta foto proses editing video (HP/Laptop).
+          </div>
+        </div>
+      </section>
+
+      <!-- VII. TAHAPAN PELAKSANAAN -->
+      <section id="juknis-7" class="bg-white rounded-2xl p-6 sm:p-7 shadow-sm border border-slate-200">
+        <div class="flex items-center gap-3 border-b border-slate-100 pb-3 mb-4">
+          <div class="w-9 h-9 rounded-xl bg-red-100 text-red-700 flex items-center justify-center font-black text-sm">VII</div>
+          <h3 class="text-base sm:text-lg font-bold text-slate-900">TAHAPAN PELAKSANAAN</h3>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs mb-4">
+          <div class="p-3.5 bg-amber-50 rounded-xl border border-amber-200">
+            <span class="text-[10px] font-bold text-amber-800 uppercase block">Tahap 1</span>
+            <strong class="text-slate-900 block mt-1">Pendaftaran & Formulir</strong>
+            <p class="text-slate-600 mt-1">6 Oktober 2026</p>
+          </div>
+          <div class="p-3.5 bg-blue-50 rounded-xl border border-blue-200">
+            <span class="text-[10px] font-bold text-blue-800 uppercase block">Tahap 2</span>
+            <strong class="text-slate-900 block mt-1">Produksi Video</strong>
+            <p class="text-slate-600 mt-1">7 Oktober s.d 8 November 2026 (Pukul 21.00 WIB)</p>
+          </div>
+          <div class="p-3.5 bg-red-50 rounded-xl border border-red-200">
+            <span class="text-[10px] font-bold text-red-800 uppercase block">Tahap 3</span>
+            <strong class="text-slate-900 block mt-1">Penjurian Dewan Juri</strong>
+            <p class="text-slate-600 mt-1">9 November s.d 13 November 2026</p>
+          </div>
+        </div>
+        <div class="text-[11px] text-slate-500 bg-slate-50 p-3 rounded-xl border border-slate-200">
+          Tahapan lengkap: Sosialisasi &bull; Pendaftaran &bull; Produksi Video &bull; Pengumpulan Karya &bull; Seleksi Administrasi &bull; Penilaian/Juri &bull; Penetapan Pemenang &bull; Pengumuman &bull; Pemberian Penghargaan &bull; Publikasi Praktik Baik.
+        </div>
+      </section>
+
+      <!-- VIII. DISKUALIFIKASI & PENETAPAN PEMENANG -->
+      <section id="juknis-8" class="bg-white rounded-2xl p-6 sm:p-7 shadow-sm border border-slate-200">
+        <div class="flex items-center gap-3 border-b border-slate-100 pb-3 mb-4">
+          <div class="w-9 h-9 rounded-xl bg-red-100 text-red-700 flex items-center justify-center font-black text-sm">VIII</div>
+          <h3 class="text-base sm:text-lg font-bold text-slate-900">DISKUALIFIKASI & PENETAPAN PEMENANG</h3>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-slate-700">
+          <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+            <strong class="text-red-700 font-bold block mb-2"><i class="fa-solid fa-ban mr-1"></i> Ketentuan Diskualifikasi:</strong>
+            <ul class="space-y-1 text-slate-600">
+              <li>• Bukan karya sendiri / plagiarisme / melanggar hak cipta.</li>
+              <li>• Tidak sesuai ketentuan durasi / spesifikasi lomba.</li>
+              <li>• Menampilkan unsur SARA, diskriminasi, kekerasan.</li>
+              <li>• Informasi tidak benar atau tidak memenuhi administrasi.</li>
+              <li>• Mengumpulkan karya melewati batas waktu yang ditetapkan.</li>
+            </ul>
+          </div>
+          <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+            <strong class="text-slate-900 font-bold block mb-2"><i class="fa-solid fa-trophy mr-1 text-amber-500"></i> Penetapan & Penghargaan:</strong>
+            <ul class="space-y-1 text-slate-600">
+              <li>• Nilai akhir merupakan akumulasi/rata-rata penilaian dewan juri.</li>
+              <li>• Jika skor sama, prioritas pemenang: Pembelajaran Mendalam, Interaktivitas Siswa, Inovasi Media, dan Kualitas Produksi Video.</li>
+              <li>• Keputusan dewan juri bersifat <strong>final dan tidak dapat diganggu gugat</strong>.</li>
+              <li>• Penghargaan: Juara I, Juara II, dan Juara III.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
     <!-- VIEW 1: FORM PENILAIAN JURI -->
-    <div id="viewForm">
-      <!-- Guard Access: Banner jika Belum Login Juri -->
-      <div id="juryAccessDenied" class="hidden bg-white rounded-2xl p-8 border border-red-200 text-center shadow-sm">
+    <div id="viewForm" class="hidden">
+
+      <!-- Guard Access: Banner jika Belum Login Sebagai Juri -->
+      <div id="juryAccessDenied" class="bg-white rounded-2xl p-8 border border-red-200 text-center shadow-sm">
         <div class="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
           <i class="fa-solid fa-lock"></i>
         </div>
-        <h3 class="text-xl font-bold text-slate-800 mb-1">Akses Khusus Dewan Juri</h3>
+        <h3 class="text-xl font-bold text-slate-800 mb-1">Akses Penilaian Terkunci</h3>
         <p class="text-sm text-slate-600 max-w-md mx-auto mb-5">
-          Formulir penilaian ini dikunci dan hanya dapat diakses oleh Dewan Juri / Admin yang telah login menggunakan kredensial resmi.
+          Formulir penilaian ini khusus untuk <strong>Dewan Juri PORSENIGUR PGRI Katapang 2026</strong>. Silakan login terlebih dahulu untuk mengakses instrumen penilaian.
         </p>
-        <button onclick="openLoginModal('juri')" class="px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-xs transition shadow-md">
-          <i class="fa-solid fa-key mr-1.5"></i> Login sebagai Dewan Juri
+        <button onclick="openLoginModal('juri')" class="px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-xs transition shadow-md inline-flex items-center gap-2">
+          <i class="fa-solid fa-user-shield"></i> Login Sebagai Dewan Juri
         </button>
       </div>
 
-      <!-- Form Penjurian -->
-      <form id="judgingForm" onsubmit="handleSubmit(event)" class="space-y-8">
+      <!-- Formulir Penilaian (Aktif setelah Login Juri) -->
+      <form id="judgingForm" onsubmit="handleSubmit(event)" class="hidden space-y-6">
 
-        <!-- SECTION 1: Identitas Penilai & Ranting -->
+        <!-- SECTION 1: Identitas Penjurian -->
         <section class="bg-white rounded-2xl p-6 sm:p-7 shadow-sm border border-slate-200">
-          <div class="flex items-center gap-3 border-b border-slate-100 pb-4 mb-6">
+          <div class="flex items-center gap-3 border-b border-slate-100 pb-4 mb-5">
             <div class="w-10 h-10 rounded-xl bg-red-100 text-red-700 flex items-center justify-center font-bold text-lg">
               <i class="fa-solid fa-user-check"></i>
             </div>
             <div>
-              <h2 class="text-lg font-bold text-slate-900">1. Identitas Penilaian</h2>
-              <p class="text-xs text-slate-500">Pilih Dewan Juri dan Ranting PGRI yang sedang dinilai.</p>
+              <h2 class="text-lg font-bold text-slate-900">Identitas Penilaian Juri</h2>
+              <p class="text-xs text-slate-500">Pilih ranting PGRI yang sedang dinilai karyanya.</p>
             </div>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <!-- Nama Juri -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label class="block text-xs font-bold uppercase text-slate-700 mb-1.5" for="namaJuri">
-                Nama Dewan Juri <span class="text-red-500">*</span>
-              </label>
-              <div class="relative">
-                <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-slate-400">
-                  <i class="fa-solid fa-user-pen"></i>
-                </span>
-                <input type="text" id="namaJuri" required placeholder="Contoh: Juri 1 (Nama Lengkap)" 
-                  class="w-full pl-10 pr-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-red-500 focus:bg-white focus:outline-none transition">
-              </div>
+              <label class="block text-xs font-bold uppercase text-slate-600 mb-1.5">Nama Juri <span class="text-red-500">*</span></label>
+              <input type="text" id="namaJuri" required placeholder="Nama lengkap dewan juri" 
+                class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-red-500 focus:bg-white focus:outline-none transition">
             </div>
 
-            <!-- Ranting PGRI yang Dinilai -->
             <div>
-              <label class="block text-xs font-bold uppercase text-slate-700 mb-1.5" for="namaRanting">
-                Ranting PGRI yang Dinilai <span class="text-red-500">*</span>
-              </label>
-              <div class="relative">
-                <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-slate-400">
-                  <i class="fa-solid fa-landmark"></i>
-                </span>
-                <select id="namaRanting" required class="w-full pl-10 pr-8 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm font-semibold focus:ring-2 focus:ring-red-500 focus:bg-white focus:outline-none transition">
-                  <option value="" disabled selected>-- Pilih Ranting PGRI Katapang --</option>
-                  <option value="Cilampeni-Katapang">Cilampeni-Katapang</option>
-                  <option value="Gandasari-Banyusari">Gandasari-Banyusari</option>
-                  <option value="Sukamukti">Sukamukti</option>
-                  <option value="Pangauban">Pangauban</option>
-                  <option value="Sangkanhurip">Sangkanhurip</option>
-                  <option value="SMPN 1 Katapang">SMPN 1 Katapang</option>
-                  <option value="SMPN 2 Katapang">SMPN 2 Katapang</option>
-                  <option value="SMPN 3 Katapang">SMPN 3 Katapang</option>
-                  <option value="IGTKI">IGTKI</option>
-                </select>
-              </div>
+              <label class="block text-xs font-bold uppercase text-slate-600 mb-1.5">Nama Ranting PGRI Yang Dinilai <span class="text-red-500">*</span></label>
+              <select id="namaRanting" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm font-semibold text-slate-800 focus:ring-2 focus:ring-red-500 focus:bg-white focus:outline-none transition">
+                <option value="">-- Pilih Ranting PGRI --</option>
+                <option value="Cilampeni-Katapang">Cilampeni-Katapang</option>
+                <option value="Gandasari-Banyusari">Gandasari-Banyusari</option>
+                <option value="Sukamukti">Sukamukti</option>
+                <option value="Pangauban">Pangauban</option>
+                <option value="Sangkanhurip">Sangkanhurip</option>
+                <option value="SMPN 1 Katapang">SMPN 1 Katapang</option>
+                <option value="SMPN 2 Katapang">SMPN 2 Katapang</option>
+                <option value="SMPN 3 Katapang">SMPN 3 Katapang</option>
+                <option value="IGTKI">IGTKI</option>
+              </select>
             </div>
 
-            <!-- Judul / Materi Video -->
-            <div class="md:col-span-2">
-              <label class="block text-xs font-bold uppercase text-slate-700 mb-1.5" for="judulVideo">
-                Judul Video / Topik Pembelajaran Inovatif
-              </label>
-              <div class="relative">
-                <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-slate-400">
-                  <i class="fa-solid fa-heading"></i>
-                </span>
-                <input type="text" id="judulVideo" placeholder="Contoh: Praktik Pembelajaran Sains Berbasis IFP & Mindful Learning" 
-                  class="w-full pl-10 pr-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-red-500 focus:bg-white focus:outline-none transition">
-              </div>
+            <div class="sm:col-span-2">
+              <label class="block text-xs font-bold uppercase text-slate-600 mb-1.5">Judul Video / Materi Pembelajaran (Opsional)</label>
+              <input type="text" id="judulVideo" placeholder="Contoh: Pemanfaatan IFP dalam Pembelajaran IPA Kelas 5" 
+                class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-red-500 focus:bg-white focus:outline-none transition">
             </div>
           </div>
         </section>
 
-        <!-- SECTION 2: ASPEK PEMBELAJARAN (60 POIN) -->
+        <!-- SECTION 2: Aspek Pembelajaran (Bobot 60 Poin) -->
         <section class="bg-white rounded-2xl p-6 sm:p-7 shadow-sm border border-slate-200">
-          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-slate-100 pb-4 mb-6 gap-2">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-4 mb-5">
             <div class="flex items-center gap-3">
               <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-lg">
-                <i class="fa-solid fa-book-open-reader"></i>
+                <i class="fa-solid fa-graduation-cap"></i>
               </div>
               <div>
                 <h2 class="text-lg font-bold text-slate-900">A. Aspek Pembelajaran</h2>
-                <p class="text-xs text-slate-500">Bobot total: 60 Poin (7 Komponen Penilaian)</p>
+                <p class="text-xs text-slate-500">Komposisi 60% berdasarkan kriteria juknis Katapang Teaching Innovation Award</p>
               </div>
             </div>
-            <div class="px-3 py-1 bg-emerald-50 text-emerald-800 rounded-lg text-sm font-bold border border-emerald-200">
-              Subtotal: <span id="subtotalA" class="text-base font-extrabold text-emerald-600">0</span> / 60
+            <div class="bg-emerald-50 px-3 py-1.5 rounded-xl border border-emerald-200 text-xs font-bold text-emerald-800">
+              Subtotal: <span id="subtotalA" class="text-base font-black">0</span> / 60 Poin
             </div>
           </div>
 
-          <div class="space-y-5">
+          <div class="space-y-4">
 
             <!-- 1. Perencanaan & Kejelasan (Bobot 5) -->
             <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 hover:border-slate-300 transition">
@@ -322,7 +612,7 @@
                 <div>
                   <span class="inline-block text-xs font-bold text-slate-500 mr-1.5">No. 1</span>
                   <span class="text-sm font-bold text-slate-800">Perencanaan & Kejelasan Pembelajaran</span>
-                  <p class="text-xs text-slate-500 mt-0.5">Kesesuaian tujuan, kejelasan langkah pembuka, inti, penutup, dan integrasi modul ajar/RPP.</p>
+                  <p class="text-xs text-slate-500 mt-0.5">Kejelasan tujuan pembelajaran, alur skenario kegiatan, dan penguasaan materi ajar.</p>
                 </div>
                 <div class="flex items-center gap-2 self-end sm:self-center">
                   <span class="text-xs font-semibold text-slate-400">Maks. 5</span>
@@ -343,7 +633,7 @@
                 <div>
                   <span class="inline-block text-xs font-bold text-slate-500 mr-1.5">No. 2</span>
                   <span class="text-sm font-bold text-slate-800">Mindful Learning</span>
-                  <p class="text-xs text-slate-500 mt-0.5">Peserta didik belajar secara sadar, fokus, aktif berpikir mendalam, mengeksplorasi masalah & berrefleksi.</p>
+                  <p class="text-xs text-slate-500 mt-0.5">Siswa belajar sadar, fokus, aktif berpikir kritis, dan mengeksplorasi konsep.</p>
                 </div>
                 <div class="flex items-center gap-2 self-end sm:self-center">
                   <span class="text-xs font-semibold text-slate-400">Maks. 10</span>
@@ -364,7 +654,7 @@
                 <div>
                   <span class="inline-block text-xs font-bold text-slate-500 mr-1.5">No. 3</span>
                   <span class="text-sm font-bold text-slate-800">Meaningful Learning</span>
-                  <p class="text-xs text-slate-500 mt-0.5">Pembelajaran dikaitkan dengan kehidupan nyata, pengalaman kontekstual, dan kebutuhan siswa.</p>
+                  <p class="text-xs text-slate-500 mt-0.5">Kontekstual dengan kehidupan nyata peserta didik, kebutuhan siswa, dan problem-solving nyata.</p>
                 </div>
                 <div class="flex items-center gap-2 self-end sm:self-center">
                   <span class="text-xs font-semibold text-slate-400">Maks. 10</span>
@@ -385,7 +675,7 @@
                 <div>
                   <span class="inline-block text-xs font-bold text-slate-500 mr-1.5">No. 4</span>
                   <span class="text-sm font-bold text-slate-800">Joyful Learning</span>
-                  <p class="text-xs text-slate-500 mt-0.5">Pembelajaran berlangsung aktif, positif, aman, komunikatif, inklusif, dan menyenangkan.</p>
+                  <p class="text-xs text-slate-500 mt-0.5">Suasana belajar gembira, lingkungan belajar aman, apresiatif, interaktif, dan antusiasme tinggi.</p>
                 </div>
                 <div class="flex items-center gap-2 self-end sm:self-center">
                   <span class="text-xs font-semibold text-slate-400">Maks. 10</span>
@@ -400,13 +690,13 @@
               </div>
             </div>
 
-            <!-- 5. Interaktivitas & Keterlibatan Peserta Didik (Bobot 10) -->
+            <!-- 5. Interaktivitas & Keterlibatan Siswa (Bobot 10) -->
             <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 hover:border-slate-300 transition">
               <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-2">
                 <div>
                   <span class="inline-block text-xs font-bold text-slate-500 mr-1.5">No. 5</span>
                   <span class="text-sm font-bold text-slate-800">Interaktivitas & Keterlibatan Peserta Didik</span>
-                  <p class="text-xs text-slate-500 mt-0.5">Interaksi dua arah guru-siswa, kolaborasi antar siswa, keterlibatan aktif semua anak.</p>
+                  <p class="text-xs text-slate-500 mt-0.5">Komunikasi dua arah guru-siswa, kolaborasi antar siswa, keterlibatan aktif semua peserta didik.</p>
                 </div>
                 <div class="flex items-center gap-2 self-end sm:self-center">
                   <span class="text-xs font-semibold text-slate-400">Maks. 10</span>
@@ -421,13 +711,13 @@
               </div>
             </div>
 
-            <!-- 6. Inovasi Strategi & Media Pembelajaran (Bobot 10) -->
+            <!-- 6. Inovasi Strategi & Pemanfaatan IFP (Bobot 10) -->
             <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 hover:border-slate-300 transition">
               <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-2">
                 <div>
                   <span class="inline-block text-xs font-bold text-slate-500 mr-1.5">No. 6</span>
-                  <span class="text-sm font-bold text-slate-800">Inovasi Strategi & Media (Termasuk IFP)</span>
-                  <p class="text-xs text-slate-500 mt-0.5">Kreativitas metode, pemanfaatan Interactive Flat Panel (IFP), serta integrasi aplikasi teknologi.</p>
+                  <span class="text-sm font-bold text-slate-800">Inovasi Strategi & Media Pembelajaran (IFP)</span>
+                  <p class="text-xs text-slate-500 mt-0.5">Kreativitas penggunaan Interactive Flat Panel (IFP), aplikasi, media ajar, atau teknologi baru.</p>
                 </div>
                 <div class="flex items-center gap-2 self-end sm:self-center">
                   <span class="text-xs font-semibold text-slate-400">Maks. 10</span>
@@ -442,13 +732,13 @@
               </div>
             </div>
 
-            <!-- 7. Refleksi & Penguatan Pembelajaran (Bobot 5) -->
+            <!-- 7. Refleksi & Penguatan (Bobot 5) -->
             <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 hover:border-slate-300 transition">
               <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-2">
                 <div>
                   <span class="inline-block text-xs font-bold text-slate-500 mr-1.5">No. 7</span>
                   <span class="text-sm font-bold text-slate-800">Refleksi & Penguatan Pembelajaran</span>
-                  <p class="text-xs text-slate-500 mt-0.5">Tindak lanjut, kesimpulan bermakna, umpan balik konstruktif, serta penguatan konsep materi.</p>
+                  <p class="text-xs text-slate-500 mt-0.5">Penarikan kesimpulan materi, umpan balik reflektif, dan rencana tindak lanjut belajar.</p>
                 </div>
                 <div class="flex items-center gap-2 self-end sm:self-center">
                   <span class="text-xs font-semibold text-slate-400">Maks. 5</span>
@@ -466,32 +756,32 @@
           </div>
         </section>
 
-        <!-- SECTION 3: ASPEK PRODUKSI VIDEO (40 POIN) -->
+        <!-- SECTION 3: Aspek Produksi Video (Bobot 40 Poin) -->
         <section class="bg-white rounded-2xl p-6 sm:p-7 shadow-sm border border-slate-200">
-          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-slate-100 pb-4 mb-6 gap-2">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-100 pb-4 mb-5">
             <div class="flex items-center gap-3">
               <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-lg">
-                <i class="fa-solid fa-clapperboard"></i>
+                <i class="fa-solid fa-video"></i>
               </div>
               <div>
                 <h2 class="text-lg font-bold text-slate-900">B. Aspek Produksi Video</h2>
-                <p class="text-xs text-slate-500">Bobot total: 40 Poin (5 Komponen Penilaian)</p>
+                <p class="text-xs text-slate-500">Komposisi 40% aspek teknis sinematografi dan estetika video</p>
               </div>
             </div>
-            <div class="px-3 py-1 bg-blue-50 text-blue-800 rounded-lg text-sm font-bold border border-blue-200">
-              Subtotal: <span id="subtotalB" class="text-base font-extrabold text-blue-600">0</span> / 40
+            <div class="bg-blue-50 px-3 py-1.5 rounded-xl border border-blue-200 text-xs font-bold text-blue-800">
+              Subtotal: <span id="subtotalB" class="text-base font-black">0</span> / 40 Poin
             </div>
           </div>
 
-          <div class="space-y-5">
+          <div class="space-y-4">
 
-            <!-- 1. Kualitas visual & Pengambilan Gambar (Bobot 10) -->
+            <!-- 1. Kualitas Visual (Bobot 10) -->
             <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 hover:border-slate-300 transition">
               <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-2">
                 <div>
                   <span class="inline-block text-xs font-bold text-slate-500 mr-1.5">No. 1</span>
                   <span class="text-sm font-bold text-slate-800">Kualitas Visual & Pengambilan Gambar</span>
-                  <p class="text-xs text-slate-500 mt-0.5">Ketajaman resolusi (HD/Full HD), kestabilan video, variasi sudut pengambilan gambar (angle & framing).</p>
+                  <p class="text-xs text-slate-500 mt-0.5">Ketajaman visual (HD/FHD), kestabilan rekaman (bebas goyang), komposisi sudut pandang (angle).</p>
                 </div>
                 <div class="flex items-center gap-2 self-end sm:self-center">
                   <span class="text-xs font-semibold text-slate-400">Maks. 10</span>
@@ -512,7 +802,7 @@
                 <div>
                   <span class="inline-block text-xs font-bold text-slate-500 mr-1.5">No. 2</span>
                   <span class="text-sm font-bold text-slate-800">Kualitas Audio</span>
-                  <p class="text-xs text-slate-500 mt-0.5">Kejelasan vokal guru dan siswa, keseimbangan volume musik pengiring (BGM) tanpa menutupi narasi.</p>
+                  <p class="text-xs text-slate-500 mt-0.5">Kejelasan suara guru & siswa, minim noise/distorsi, volume proporsional antara musik latar dan suara vokal.</p>
                 </div>
                 <div class="flex items-center gap-2 self-end sm:self-center">
                   <span class="text-xs font-semibold text-slate-400">Maks. 8</span>
@@ -877,37 +1167,48 @@
             <p class="text-xs text-slate-500">Daftarkan Nomor KTA PGRI Anda sebelum login ke sistem.</p>
           </div>
 
-          <div>
-            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Nomor KTA PGRI <span class="text-red-500">*</span></label>
-            <input type="text" id="regNoKta" required placeholder="Contoh: 3204012345678" 
-              class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+          <!-- Banner Informasi / Peringatan Tanggal Pembukaan Pendaftaran -->
+          <div id="registrationNotice" class="p-3.5 bg-amber-50 border border-amber-300 rounded-xl text-xs text-amber-900 flex items-start gap-2.5">
+            <i class="fa-solid fa-calendar-xmark text-amber-600 text-base mt-0.5 shrink-0"></i>
+            <div>
+              <strong class="block font-bold">Pendaftaran Belum Dibuka!</strong>
+              <span>Pendaftaran peserta lomba baru bisa dilakukan mulai tanggal <strong class="text-red-700">15 November 2026</strong>. Sebelum tanggal tersebut, peserta hanya dapat melihat dokumen Petunjuk Teknis.</span>
+            </div>
           </div>
 
-          <div>
-            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Nama Lengkap Peserta / Guru <span class="text-red-500">*</span></label>
-            <input type="text" id="regNamaLengkap" required placeholder="Nama lengkap beserta gelar" 
-              class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
-          </div>
+          <div id="registrationFieldsWrapper" class="space-y-4">
+            <div>
+              <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Nomor KTA PGRI <span class="text-red-500">*</span></label>
+              <input type="text" id="regNoKta" required placeholder="Contoh: 3204012345678" 
+                class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            </div>
 
-          <div>
-            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Asal Ranting PGRI <span class="text-red-500">*</span></label>
-            <select id="regNamaRanting" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
-              <option value="Cilampeni-Katapang">Cilampeni-Katapang</option>
-              <option value="Gandasari-Banyusari">Gandasari-Banyusari</option>
-              <option value="Sukamukti">Sukamukti</option>
-              <option value="Pangauban">Pangauban</option>
-              <option value="Sangkanhurip">Sangkanhurip</option>
-              <option value="SMPN 1 Katapang">SMPN 1 Katapang</option>
-              <option value="SMPN 2 Katapang">SMPN 2 Katapang</option>
-              <option value="SMPN 3 Katapang">SMPN 3 Katapang</option>
-              <option value="IGTKI">IGTKI</option>
-            </select>
-          </div>
+            <div>
+              <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Nama Lengkap Peserta / Guru <span class="text-red-500">*</span></label>
+              <input type="text" id="regNamaLengkap" required placeholder="Nama lengkap beserta gelar" 
+                class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            </div>
 
-          <button id="btnDaftarKta" onclick="processDaftarKta()" 
-            class="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-xs shadow-md transition flex items-center justify-center gap-2">
-            <span>Daftarkan Nomor KTA</span>
-          </button>
+            <div>
+              <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Asal Ranting PGRI <span class="text-red-500">*</span></label>
+              <select id="regNamaRanting" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                <option value="Cilampeni-Katapang">Cilampeni-Katapang</option>
+                <option value="Gandasari-Banyusari">Gandasari-Banyusari</option>
+                <option value="Sukamukti">Sukamukti</option>
+                <option value="Pangauban">Pangauban</option>
+                <option value="Sangkanhurip">Sangkanhurip</option>
+                <option value="SMPN 1 Katapang">SMPN 1 Katapang</option>
+                <option value="SMPN 2 Katapang">SMPN 2 Katapang</option>
+                <option value="SMPN 3 Katapang">SMPN 3 Katapang</option>
+                <option value="IGTKI">IGTKI</option>
+              </select>
+            </div>
+
+            <button id="btnDaftarKta" onclick="processDaftarKta()" 
+              class="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-xs shadow-md transition flex items-center justify-center gap-2">
+              <span>Daftarkan Nomor KTA</span>
+            </button>
+          </div>
         </div>
 
       </div>
@@ -931,7 +1232,14 @@
   <!-- SCRIPT LOGIC -->
   <script>
     // URL Web App Google Apps Script tersimpan langsung di dalam kode aplikasi (tanpa link spreadsheet publik)
-    const APP_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyJ6QgjfNg1nM29piJH3BN3oAltvbL5O5YS3UH6NzATw9nYTvHYB4pa98Jjos0fV2mpyA/exec"; 
+    const APP_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyusc54zYLfktZotawetWZxVyawQafdQYSWUos6GulA1518HpzP7Cdhz9D4wVkpGG9wvQ/exec"; 
+
+    // Batas Waktu Pembukaan Pendaftaran: 15 November 2026 Pukul 00:00:00 WIB
+    const REGISTRATION_START_DATE = new Date("2026-11-15T00:00:00+07:00");
+
+    function isRegistrationOpen() {
+      return new Date() >= REGISTRATION_START_DATE;
+    }
 
     // Session State User
     let currentUser = {
@@ -943,9 +1251,7 @@
     };
 
     // Daftar KTA terdaftar (lokal cache & synced dari spreadsheet)
-    let registeredKtaList = [
-      { noKta: "320401", nama: "Guru Peserta 1", ranting: "Cilampeni-Katapang" }
-    ];
+    let registeredKtaList = [];
 
     // Daftar 9 Ranting Resmi Sesuai Arahan Panitia
     const LIST_RANTING = [
@@ -986,6 +1292,9 @@
     window.addEventListener("DOMContentLoaded", () => {
       calculateTotals();
 
+      // Cek status pembukaan pendaftaran
+      checkRegistrationSchedule();
+
       // Muat daftar KTA dari cache browser
       const savedKta = localStorage.getItem(STORAGE_KEY_KTA);
       if (savedKta) {
@@ -1002,51 +1311,58 @@
 
       updateUserUI();
 
-      // Jika belum login, buka tab rekap yang memicu banner pembatasan akses
-      if (!currentUser.isLoggedIn) {
-        switchTab('rekap');
-      } else if (currentUser.role === 'juri') {
-        switchTab('form');
-      } else {
-        switchTab('rekap');
-      }
+      // Default buka tab Petunjuk Teknis yang bisa diakses oleh siapa saja
+      switchTab('juknis');
     });
 
-    // ==========================================
-    // SISTEM LOGIN & AUTHENTICATION
-    // ==========================================
-    function openLoginModal(tab = 'juri') {
-      document.getElementById("modalAuth").classList.remove("hidden");
-      switchAuthTab(tab);
-    }
+    function checkRegistrationSchedule() {
+      const open = isRegistrationOpen();
+      const noticeBox = document.getElementById("registrationNotice");
+      const btnDaftar = document.getElementById("btnDaftarKta");
+      const regInputs = [
+        document.getElementById("regNoKta"),
+        document.getElementById("regNamaLengkap"),
+        document.getElementById("regNamaRanting")
+      ];
 
-    function closeAuthModal() {
-      document.getElementById("modalAuth").classList.add("hidden");
-    }
-
-    function switchAuthTab(tab) {
-      const panelJuri = document.getElementById("authPanelJuri");
-      const panelPeserta = document.getElementById("authPanelPeserta");
-      const panelDaftar = document.getElementById("authPanelDaftar");
-
-      const btnJuri = document.getElementById("authTabBtnJuri");
-      const btnPeserta = document.getElementById("authTabBtnPeserta");
-      const btnDaftar = document.getElementById("authTabBtnDaftar");
-
-      [panelJuri, panelPeserta, panelDaftar].forEach(p => p.classList.add("hidden"));
-      [btnJuri, btnPeserta, btnDaftar].forEach(b => {
-        b.className = "flex-1 pb-2.5 font-bold text-xs uppercase tracking-wider text-slate-400 border-b-2 border-transparent hover:text-slate-700 transition";
-      });
-
-      if (tab === 'juri') {
-        panelJuri.classList.remove("hidden");
-        btnJuri.className = "flex-1 pb-2.5 font-bold text-xs uppercase tracking-wider text-red-600 border-b-2 border-red-600 transition";
-      } else if (tab === 'peserta') {
-        panelPeserta.classList.remove("hidden");
-        btnPeserta.className = "flex-1 pb-2.5 font-bold text-xs uppercase tracking-wider text-emerald-600 border-b-2 border-emerald-600 transition";
-      } else if (tab === 'daftar') {
-        panelDaftar.classList.remove("hidden");
-        btnDaftar.className = "flex-1 pb-2.5 font-bold text-xs uppercase tracking-wider text-blue-600 border-b-2 border-blue-600 transition";
+      if (!open) {
+        if (noticeBox) {
+          noticeBox.className = "p-3.5 bg-red-50 border border-red-300 rounded-xl text-xs text-red-900 flex items-start gap-2.5";
+          noticeBox.innerHTML = `
+            <i class="fa-solid fa-lock text-red-600 text-base mt-0.5 shrink-0"></i>
+            <div>
+              <strong class="block font-bold">Pendaftaran Peserta Ditutup!</strong>
+              <span>Akses pendaftaran ditolak. Pendaftaran peserta lomba baru bisa dilakukan mulai tanggal <strong class="text-red-700 underline font-black">15 November 2026</strong>. Saat ini peserta hanya dapat melihat dokumen <strong>Petunjuk Teknis</strong>.</span>
+            </div>
+          `;
+        }
+        if (btnDaftar) {
+          btnDaftar.disabled = true;
+          btnDaftar.className = "w-full py-2.5 bg-slate-300 text-slate-500 font-bold rounded-xl text-xs cursor-not-allowed flex items-center justify-center gap-2";
+          btnDaftar.innerHTML = `<i class="fa-solid fa-lock"></i> <span>Pendaftaran Dibuka 15 November 2026</span>`;
+        }
+        regInputs.forEach(input => {
+          if (input) {
+            input.disabled = true;
+            input.classList.add("bg-slate-200", "cursor-not-allowed");
+          }
+        });
+      } else {
+        if (noticeBox) {
+          noticeBox.className = "p-3 bg-emerald-50 border border-emerald-300 rounded-xl text-xs text-emerald-800 flex items-center gap-2";
+          noticeBox.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600"></i> <span>Pendaftaran peserta telah resmi dibuka! Silakan masukkan data Anda.</span>`;
+        }
+        if (btnDaftar) {
+          btnDaftar.disabled = false;
+          btnDaftar.className = "w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-xs shadow-md transition flex items-center justify-center gap-2";
+          btnDaftar.innerHTML = `<span>Daftarkan Nomor KTA</span>`;
+        }
+        regInputs.forEach(input => {
+          if (input) {
+            input.disabled = false;
+            input.classList.remove("bg-slate-200", "cursor-not-allowed");
+          }
+        });
       }
     }
 
@@ -1056,10 +1372,65 @@
         currentUser = { isLoggedIn: false, role: 'guest', name: '', kta: '', ranting: '' };
         sessionStorage.removeItem(STORAGE_KEY_AUTH);
         updateUserUI();
-        switchTab('rekap');
+        switchTab('juknis');
         showToast("Anda telah keluar dari akun.", "info");
       } else {
         openLoginModal('juri');
+      }
+    }
+
+    // Modal Auth Handlers
+    function openLoginModal(tab = 'juri') {
+      const modal = document.getElementById("modalAuth");
+      if (modal) {
+        modal.classList.remove("hidden");
+        switchAuthTab(tab);
+      }
+    }
+
+    function closeAuthModal() {
+      const modal = document.getElementById("modalAuth");
+      if (modal) {
+        modal.classList.add("hidden");
+      }
+    }
+
+    function switchAuthTab(tab) {
+      const tabJuri = document.getElementById("authTabBtnJuri");
+      const tabPeserta = document.getElementById("authTabBtnPeserta");
+      const tabDaftar = document.getElementById("authTabBtnDaftar");
+
+      const panelJuri = document.getElementById("authPanelJuri");
+      const panelPeserta = document.getElementById("authPanelPeserta");
+      const panelDaftar = document.getElementById("authPanelDaftar");
+
+      // Reset style tombol tab
+      [tabJuri, tabPeserta, tabDaftar].forEach(btn => {
+        if (btn) {
+          btn.className = "flex-1 pb-2.5 font-bold text-xs uppercase tracking-wider text-slate-400 border-b-2 border-transparent hover:text-slate-700 transition";
+        }
+      });
+
+      // Sembunyikan semua panel
+      if (panelJuri) panelJuri.classList.add("hidden");
+      if (panelPeserta) panelPeserta.classList.add("hidden");
+      if (panelDaftar) panelDaftar.classList.add("hidden");
+
+      if (tab === 'juri') {
+        if (tabJuri) {
+          tabJuri.className = "flex-1 pb-2.5 font-bold text-xs uppercase tracking-wider text-red-600 border-b-2 border-red-600 transition";
+        }
+        if (panelJuri) panelJuri.classList.remove("hidden");
+      } else if (tab === 'peserta') {
+        if (tabPeserta) {
+          tabPeserta.className = "flex-1 pb-2.5 font-bold text-xs uppercase tracking-wider text-emerald-600 border-b-2 border-emerald-600 transition";
+        }
+        if (panelPeserta) panelPeserta.classList.remove("hidden");
+      } else if (tab === 'daftar') {
+        if (tabDaftar) {
+          tabDaftar.className = "flex-1 pb-2.5 font-bold text-xs uppercase tracking-wider text-blue-600 border-b-2 border-blue-600 transition";
+        }
+        if (panelDaftar) panelDaftar.classList.remove("hidden");
       }
     }
 
@@ -1091,6 +1462,11 @@
     }
 
     function processPesertaLogin() {
+      if (!isRegistrationOpen() && registeredKtaList.length === 0) {
+        showToast("Pendaftaran peserta baru dibuka mulai tanggal 15 November 2026. Anda saat ini hanya dapat membaca Petunjuk Teknis.", "error");
+        return;
+      }
+
       const noKta = document.getElementById("inputPesertaKta").value.trim();
       if (!noKta) {
         showToast("Harap masukkan nomor KTA Anda!", "error");
@@ -1114,13 +1490,23 @@
         switchTab('rekap');
         showToast(`Selamat datang, ${found.nama} (${found.ranting})!`, "success");
       } else {
-        showToast("Nomor KTA belum terdaftar! Silakan daftarkan KTA terlebih dahulu.", "error");
-        switchAuthTab('daftar');
-        document.getElementById("regNoKta").value = noKta;
+        if (!isRegistrationOpen()) {
+          showToast("Nomor KTA belum terdaftar. Pendaftaran KTA peserta baru dibuka mulai tanggal 15 November 2026!", "error");
+        } else {
+          showToast("Nomor KTA belum terdaftar! Silakan daftarkan KTA terlebih dahulu.", "error");
+          switchAuthTab('daftar');
+          document.getElementById("regNoKta").value = noKta;
+        }
       }
     }
 
     async function processDaftarKta() {
+      // Validasi waktu pendaftaran
+      if (!isRegistrationOpen()) {
+        showToast("Pendaftaran ditolak! Pendaftaran peserta baru bisa dilakukan mulai tanggal 15 November 2026.", "error");
+        return;
+      }
+
       const noKta = document.getElementById("regNoKta").value.trim();
       const nama = document.getElementById("regNamaLengkap").value.trim();
       const ranting = document.getElementById("regNamaRanting").value;
@@ -1256,25 +1642,34 @@
 
     // Tab Navigation
     function switchTab(tab) {
+      const viewJuknis = document.getElementById("viewJuknis");
       const viewForm = document.getElementById("viewForm");
       const viewRekap = document.getElementById("viewRekap");
+      
+      const btnJuknis = document.getElementById("tabBtnJuknis");
       const btnForm = document.getElementById("tabBtnForm");
       const btnRekap = document.getElementById("tabBtnRekap");
 
-      if (tab === 'form') {
+      // Reset semua view & tombol
+      [viewJuknis, viewForm, viewRekap].forEach(v => v.classList.add("hidden"));
+      [btnJuknis, btnForm, btnRekap].forEach(b => {
+        b.className = "flex items-center gap-2 px-5 sm:px-6 py-3 text-xs sm:text-sm font-bold border-b-4 border-transparent text-red-200 hover:text-white hover:bg-white/5 rounded-t-xl transition shrink-0";
+      });
+
+      if (tab === 'juknis') {
+        // Tab Petunjuk Teknis: ALL ACCESS (Bisa dilihat siapa saja)
+        viewJuknis.classList.remove("hidden");
+        btnJuknis.className = "flex items-center gap-2 px-5 sm:px-6 py-3 text-xs sm:text-sm font-bold border-b-4 border-amber-400 text-white bg-white/10 rounded-t-xl transition shrink-0";
+      } else if (tab === 'form') {
         if (!currentUser.isLoggedIn || currentUser.role !== 'juri') {
           showToast("Form penilaian hanya bisa diakses setelah login sebagai Dewan Juri!", "error");
           openLoginModal('juri');
         }
         viewForm.classList.remove("hidden");
-        viewRekap.classList.add("hidden");
-        btnForm.className = "flex items-center gap-2 px-6 py-3 text-sm font-bold border-b-4 border-amber-400 text-white bg-white/10 rounded-t-xl transition";
-        btnRekap.className = "flex items-center gap-2 px-6 py-3 text-sm font-bold border-b-4 border-transparent text-red-200 hover:text-white hover:bg-white/5 rounded-t-xl transition";
-      } else {
-        viewForm.classList.add("hidden");
+        btnForm.className = "flex items-center gap-2 px-5 sm:px-6 py-3 text-xs sm:text-sm font-bold border-b-4 border-amber-400 text-white bg-white/10 rounded-t-xl transition shrink-0";
+      } else if (tab === 'rekap') {
         viewRekap.classList.remove("hidden");
-        btnRekap.className = "flex items-center gap-2 px-6 py-3 text-sm font-bold border-b-4 border-amber-400 text-white bg-white/10 rounded-t-xl transition";
-        btnForm.className = "flex items-center gap-2 px-6 py-3 text-sm font-bold border-b-4 border-transparent text-red-200 hover:text-white hover:bg-white/5 rounded-t-xl transition";
+        btnRekap.className = "flex items-center gap-2 px-5 sm:px-6 py-3 text-xs sm:text-sm font-bold border-b-4 border-amber-400 text-white bg-white/10 rounded-t-xl transition shrink-0";
 
         // Cek apakah pengguna sudah login (Juri atau Peserta terdaftar)
         if (!currentUser.isLoggedIn) {
