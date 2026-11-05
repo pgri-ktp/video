@@ -199,6 +199,7 @@
         <button id="tabBtnRekap" onclick="switchTab('rekap')" 
           class="flex items-center gap-2 px-6 py-3 text-sm font-bold border-b-4 border-transparent text-red-200 hover:text-white hover:bg-white/5 rounded-t-xl transition">
           <i class="fa-solid fa-ranking-star"></i> Rekapitulasi Pemenang
+          <span id="tabLockBadgeRekap" class="ml-1 text-[10px] bg-red-950/80 px-2 py-0.5 rounded-full text-amber-300 font-bold"><i class="fa-solid fa-lock"></i> Terbatas</span>
         </button>
       </div>
     </div>
@@ -650,80 +651,107 @@
 
     <!-- VIEW 2: REKAPITULASI PEMENANG (2 JURI REALTIME) -->
     <div id="viewRekap" class="hidden space-y-6">
+
+      <!-- Guard Access: Banner jika Belum Login (Bukan Admin & Bukan Peserta Terdaftar) -->
+      <div id="rekapAccessDenied" class="hidden bg-white rounded-2xl p-8 border border-amber-200 text-center shadow-sm">
+        <div class="w-16 h-16 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <h3 class="text-xl font-bold text-slate-800 mb-1">Akses Rekapitulasi Terbatas</h3>
+        <p class="text-sm text-slate-600 max-w-md mx-auto mb-5">
+          Papan peringkat dan rekapitulasi penilaian hanya dapat diakses oleh <strong>Dewan Juri / Admin</strong> dan <strong>Peserta Lomba yang memiliki Nomor KTA terdaftar</strong>.
+        </p>
+        <div class="flex flex-wrap justify-center gap-3">
+          <button onclick="openLoginModal('peserta')" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs transition shadow-md flex items-center gap-2">
+            <i class="fa-solid fa-id-card"></i> Login dengan Nomor KTA
+          </button>
+          <button onclick="openLoginModal('juri')" class="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-xs transition shadow-md flex items-center gap-2">
+            <i class="fa-solid fa-user-shield"></i> Login Juri / Admin
+          </button>
+          <button onclick="openLoginModal('daftar')" class="px-5 py-2.5 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-xl text-xs transition shadow-md flex items-center gap-2">
+            <i class="fa-solid fa-user-plus"></i> Daftar KTA Baru
+          </button>
+        </div>
+      </div>
+
+      <!-- Container Konten Rekapitulasi (Hanya muncul jika berhak) -->
+      <div id="rekapContentWrapper" class="space-y-6">
       
-      <!-- Top Bar Rekapitulasi -->
-      <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4">
-        <div>
-          <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-xs font-bold uppercase tracking-wider">
-            Akumulasi 2 Dewan Juri
-          </span>
-          <h2 class="text-xl font-black text-slate-900 mt-1">Papan Peringkat & Rekapitulasi Nilai</h2>
-          <p class="text-xs text-slate-500">Membaca langsung dari spreadsheet dan menghitung rata-rata nilai dari 2 Juri.</p>
+        <!-- Top Bar Rekapitulasi -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div>
+            <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-xs font-bold uppercase tracking-wider">
+              Akumulasi 2 Dewan Juri
+            </span>
+            <h2 class="text-xl font-black text-slate-900 mt-1">Papan Peringkat & Rekapitulasi Nilai</h2>
+            <p class="text-xs text-slate-500">Membaca langsung dari spreadsheet dan menghitung rata-rata nilai dari 2 Juri.</p>
+          </div>
+
+          <div class="flex items-center gap-3 w-full md:w-auto">
+            <button onclick="fetchRealtimeRekap()" id="btnRefresh" 
+              class="px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold shadow-md transition flex items-center gap-2">
+              <i class="fa-solid fa-arrows-rotate" id="refreshIcon"></i> Refresh Data Realtime
+            </button>
+            <!-- Tombol Cetak Rekap: Hanya muncul jika login sebagai Juri / Admin -->
+            <button id="btnPrintRekap" onclick="window.print()" 
+              class="hidden px-4 py-2.5 bg-slate-800 hover:bg-slate-900 text-white rounded-xl text-xs font-bold transition flex items-center gap-2">
+              <i class="fa-solid fa-print"></i> Cetak Rekap
+            </button>
+          </div>
         </div>
 
-        <div class="flex items-center gap-3 w-full md:w-auto">
-          <button onclick="fetchRealtimeRekap()" id="btnRefresh" 
-            class="px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold shadow-md transition flex items-center gap-2">
-            <i class="fa-solid fa-arrows-rotate" id="refreshIcon"></i> Refresh Data Realtime
-          </button>
-          <!-- Tombol Cetak Rekap: Hanya muncul jika login sebagai Juri / Admin -->
-          <button id="btnPrintRekap" onclick="window.print()" 
-            class="hidden px-4 py-2.5 bg-slate-800 hover:bg-slate-900 text-white rounded-xl text-xs font-bold transition flex items-center gap-2">
-            <i class="fa-solid fa-print"></i> Cetak Rekap
-          </button>
-        </div>
-      </div>
-
-      <!-- Podium Juara 1, 2, 3 -->
-      <div id="podiumArea" class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <!-- Akan dirender dinamis via JavaScript -->
-      </div>
-
-      <!-- Tabel Lengkap Seluruh Ranting -->
-      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-        <div class="p-5 border-b border-slate-100 flex items-center justify-between">
-          <h3 class="font-bold text-slate-900 text-sm sm:text-base flex items-center gap-2">
-            <i class="fa-solid fa-table-list text-red-600"></i> Tabel Peringkat Seluruh Ranting PGRI Katapang
-          </h3>
-          <span id="rekapCountBadge" class="text-xs bg-slate-100 text-slate-700 font-bold px-2.5 py-1 rounded-lg">
-            9 Ranting Terdaftar
-          </span>
+        <!-- Podium Juara 1, 2, 3 -->
+        <div id="podiumArea" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <!-- Akan dirender dinamis via JavaScript -->
         </div>
 
-        <div class="overflow-x-auto">
-          <table class="w-full text-left text-xs sm:text-sm">
-            <thead class="bg-slate-50 text-slate-600 font-bold uppercase text-[11px] border-b border-slate-200">
-              <tr>
-                <th class="py-3.5 px-4 text-center">Peringkat</th>
-                <th class="py-3.5 px-4">Ranting PGRI</th>
-                <th class="py-3.5 px-3 text-center">Nilai Juri 1</th>
-                <th class="py-3.5 px-3 text-center">Nilai Juri 2</th>
-                <th class="py-3.5 px-3 text-center">Rata-rata Skor</th>
-                <th class="py-3.5 px-4 text-center">Status Juri</th>
-                <th class="py-3.5 px-4 text-center">Kategori Juara</th>
-              </tr>
-            </thead>
-            <tbody id="tableRekapBody" class="divide-y divide-slate-100">
-              <!-- Render Data -->
-              <tr>
-                <td colspan="7" class="py-10 text-center text-slate-400">
-                  <i class="fa-solid fa-spinner fa-spin text-2xl mb-2 text-slate-300 block"></i>
-                  Memuat data penilaian dari Google Spreadsheet...
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+        <!-- Tabel Lengkap Seluruh Ranting -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+          <div class="p-5 border-b border-slate-100 flex items-center justify-between">
+            <h3 class="font-bold text-slate-900 text-sm sm:text-base flex items-center gap-2">
+              <i class="fa-solid fa-table-list text-red-600"></i> Tabel Peringkat Seluruh Ranting PGRI Katapang
+            </h3>
+            <span id="rekapCountBadge" class="text-xs bg-slate-100 text-slate-700 font-bold px-2.5 py-1 rounded-lg">
+              9 Ranting Terdaftar
+            </span>
+          </div>
 
-      <!-- Log Aktivitas Penilaian Masuk -->
-      <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
-        <h4 class="font-bold text-slate-900 text-sm mb-3 flex items-center gap-2">
-          <i class="fa-solid fa-clock-rotate-left text-amber-500"></i> Log Masuk Nilai dari Dewan Juri
-        </h4>
-        <div id="logEntries" class="space-y-2 max-h-60 overflow-y-auto text-xs text-slate-600">
-          <p class="text-slate-400 italic">Belum ada catatan aktivitas penilaian terbaru.</p>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs sm:text-sm">
+              <thead class="bg-slate-50 text-slate-600 font-bold uppercase text-[11px] border-b border-slate-200">
+                <tr>
+                  <th class="py-3.5 px-4 text-center">Peringkat</th>
+                  <th class="py-3.5 px-4">Ranting PGRI</th>
+                  <th class="py-3.5 px-3 text-center">Nilai Juri 1</th>
+                  <th class="py-3.5 px-3 text-center">Nilai Juri 2</th>
+                  <th class="py-3.5 px-3 text-center">Rata-rata Skor</th>
+                  <th class="py-3.5 px-4 text-center">Status Juri</th>
+                  <th class="py-3.5 px-4 text-center">Kategori Juara</th>
+                </tr>
+              </thead>
+              <tbody id="tableRekapBody" class="divide-y divide-slate-100">
+                <!-- Render Data -->
+                <tr>
+                  <td colspan="7" class="py-10 text-center text-slate-400">
+                    <i class="fa-solid fa-spinner fa-spin text-2xl mb-2 text-slate-300 block"></i>
+                    Memuat data penilaian dari Google Spreadsheet...
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
+
+        <!-- Log Aktivitas Penilaian Masuk -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+          <h4 class="font-bold text-slate-900 text-sm mb-3 flex items-center gap-2">
+            <i class="fa-solid fa-clock-rotate-left text-amber-500"></i> Log Masuk Nilai dari Dewan Juri
+          </h4>
+          <div id="logEntries" class="space-y-2 max-h-60 overflow-y-auto text-xs text-slate-600">
+            <p class="text-slate-400 italic">Belum ada catatan aktivitas penilaian terbaru.</p>
+          </div>
+        </div>
+
       </div>
 
     </div>
@@ -974,8 +1002,12 @@
 
       updateUserUI();
 
-      // Jika belum login juri, default arahkan ke Rekapitulasi agar nyaman dilihat peserta / publik
-      if (currentUser.role !== 'juri') {
+      // Jika belum login, buka tab rekap yang memicu banner pembatasan akses
+      if (!currentUser.isLoggedIn) {
+        switchTab('rekap');
+      } else if (currentUser.role === 'juri') {
+        switchTab('form');
+      } else {
         switchTab('rekap');
       }
     });
@@ -1149,12 +1181,24 @@
       const nameText = document.getElementById("userNameText");
       const btnLabel = document.getElementById("authBtnLabel");
       const lockBadge = document.getElementById("tabLockBadge");
+      const lockBadgeRekap = document.getElementById("tabLockBadgeRekap");
       const formEl = document.getElementById("judgingForm");
       const guardEl = document.getElementById("juryAccessDenied");
       const printBtn = document.getElementById("btnPrintRekap");
+      const rekapDenied = document.getElementById("rekapAccessDenied");
+      const rekapContent = document.getElementById("rekapContentWrapper");
 
       if (currentUser.isLoggedIn) {
         btnLabel.innerText = "Keluar (Logout)";
+        
+        // Akses Rekapitulasi terbuka untuk Juri & Peserta
+        if (rekapDenied) rekapDenied.classList.add("hidden");
+        if (rekapContent) rekapContent.classList.remove("hidden");
+        if (lockBadgeRekap) {
+          lockBadgeRekap.className = "ml-1 text-[10px] bg-emerald-800 px-2 py-0.5 rounded-full text-white font-bold";
+          lockBadgeRekap.innerHTML = '<i class="fa-solid fa-unlock mr-0.5"></i> Terbuka';
+        }
+
         if (currentUser.role === 'juri') {
           dot.className = "w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse";
           roleText.innerText = "DEWAN JURI AKTIF";
@@ -1189,11 +1233,21 @@
         roleText.className = "font-bold text-amber-300 block leading-tight";
         nameText.innerText = "Silakan login untuk akses";
         btnLabel.innerText = "Masuk Sistem";
+        
         lockBadge.className = "ml-1 text-[10px] bg-red-950/80 px-2 py-0.5 rounded-full text-amber-300 font-bold";
         lockBadge.innerHTML = '<i class="fa-solid fa-lock mr-0.5"></i> Khusus Juri';
 
+        if (lockBadgeRekap) {
+          lockBadgeRekap.className = "ml-1 text-[10px] bg-red-950/80 px-2 py-0.5 rounded-full text-amber-300 font-bold";
+          lockBadgeRekap.innerHTML = '<i class="fa-solid fa-lock mr-0.5"></i> Terbatas';
+        }
+
         formEl.classList.add("hidden");
         guardEl.classList.remove("hidden");
+
+        // Rekapitulasi terkunci untuk Tamu
+        if (rekapDenied) rekapDenied.classList.remove("hidden");
+        if (rekapContent) rekapContent.classList.add("hidden");
 
         // Sembunyikan tombol Cetak Rekap dari Tamu
         if (printBtn) printBtn.classList.add("hidden");
@@ -1221,7 +1275,13 @@
         viewRekap.classList.remove("hidden");
         btnRekap.className = "flex items-center gap-2 px-6 py-3 text-sm font-bold border-b-4 border-amber-400 text-white bg-white/10 rounded-t-xl transition";
         btnForm.className = "flex items-center gap-2 px-6 py-3 text-sm font-bold border-b-4 border-transparent text-red-200 hover:text-white hover:bg-white/5 rounded-t-xl transition";
-        fetchRealtimeRekap();
+
+        // Cek apakah pengguna sudah login (Juri atau Peserta terdaftar)
+        if (!currentUser.isLoggedIn) {
+          showToast("Rekapitulasi hanya dapat diakses oleh Juri atau Peserta terdaftar!", "info");
+        } else {
+          fetchRealtimeRekap();
+        }
       }
     }
 
