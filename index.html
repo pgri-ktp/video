@@ -1,0 +1,1671 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aplikasi Penjurian Video Pembelajaran - PORSENIGUR PGRI Katapang 2026</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            pgri: {
+              red: '#D62828',
+              darkred: '#9E1B1B',
+              green: '#15803D',
+              gold: '#F59E0B',
+              slate: '#1E293B'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom range input styling */
+    input[type=range] {
+      -webkit-appearance: none;
+      width: 100%;
+      background: transparent;
+    }
+    input[type=range]:focus {
+      outline: none;
+    }
+    input[type=range]::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 8px;
+      cursor: pointer;
+      background: #E2E8F0;
+      border-radius: 9999px;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      height: 22px;
+      width: 22px;
+      border-radius: 50%;
+      background: #D62828;
+      cursor: pointer;
+      -webkit-appearance: none;
+      margin-top: -7px;
+      box-shadow: 0 2px 6px rgba(214, 40, 40, 0.4);
+      border: 2px solid #ffffff;
+      transition: transform 0.15s ease;
+    }
+    input[type=range]::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+    .badge-score {
+      min-width: 44px;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased">
+
+  <!-- Header Banner -->
+  <header class="bg-gradient-to-r from-red-800 via-red-700 to-red-900 text-white shadow-xl relative overflow-hidden">
+    <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
+      <i class="fa-solid fa-trophy text-[220px]"></i>
+    </div>
+    
+    <div class="max-w-5xl mx-auto px-4 py-6 sm:py-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+        
+        <!-- Logo Area -->
+        <div class="flex items-center gap-4 bg-white/10 p-3 rounded-2xl backdrop-blur-sm border border-white/15">
+          <!-- Logo PGRI Resmi -->
+          <div class="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-xl p-1 flex items-center justify-center shadow-md">
+            <svg viewBox="0 0 200 200" class="w-full h-full drop-shadow-sm" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <path id="pgriTopTextArc" d="M 28 100 A 72 72 0 1 1 172 100" fill="none" />
+                <path id="pgriBottomTextArc" d="M 38 120 A 72 72 0 0 0 162 120" fill="none" />
+              </defs>
+              <!-- Outer White Rim & Red Ring -->
+              <circle cx="100" cy="100" r="97" fill="#dc2626" stroke="#ffffff" stroke-width="4"/>
+              <circle cx="100" cy="100" r="91" fill="none" stroke="#ffffff" stroke-width="1.8"/>
+              
+              <!-- Inner Green Field with White Rim -->
+              <circle cx="100" cy="100" r="62" fill="#15803d" stroke="#ffffff" stroke-width="3"/>
+              
+              <!-- Curved Text: PERSATUAN GURU REPUBLIK INDONESIA -->
+              <text font-family="'Inter', sans-serif" font-size="12" font-weight="900" fill="#ffffff" letter-spacing="2">
+                <textPath href="#pgriTopTextArc" startOffset="50%" text-anchor="middle">PERSATUAN GURU REPUBLIK INDONESIA</textPath>
+              </text>
+              <!-- Curved Text: PGRI -->
+              <text font-family="'Inter', sans-serif" font-size="17" font-weight="900" fill="#ffffff" letter-spacing="4">
+                <textPath href="#pgriBottomTextArc" startOffset="50%" text-anchor="middle">PGRI</textPath>
+              </text>
+
+              <!-- Simbol Buku & Sayap (Putih dengan Garis Hijau) -->
+              <g fill="#ffffff" stroke="#15803d" stroke-width="1.2">
+                <!-- Sayap/Buku Kiri -->
+                <rect x="58" y="80" width="13" height="42" rx="2.5" />
+                <line x1="62.5" y1="84" x2="62.5" y2="118" stroke="#15803d" stroke-width="1.2" stroke-linecap="round"/>
+                <line x1="66.5" y1="84" x2="66.5" y2="118" stroke="#15803d" stroke-width="1.2" stroke-linecap="round"/>
+
+                <!-- Sayap/Buku Kanan -->
+                <rect x="129" y="80" width="13" height="42" rx="2.5" />
+                <line x1="133.5" y1="84" x2="133.5" y2="118" stroke="#15803d" stroke-width="1.2" stroke-linecap="round"/>
+                <line x1="137.5" y1="84" x2="137.5" y2="118" stroke="#15803d" stroke-width="1.2" stroke-linecap="round"/>
+
+                <!-- Buku Tengah Terbuka / Tingkat -->
+                <rect x="73" y="103" width="54" height="10" rx="1.5" />
+                <line x1="100" y1="103" x2="100" y2="113" stroke="#15803d" stroke-width="1.2"/>
+                <rect x="71" y="114" width="58" height="10" rx="1.5" />
+                <line x1="100" y1="114" x2="100" y2="124" stroke="#15803d" stroke-width="1.2"/>
+              </g>
+
+              <!-- Tangkai Obor Kuning -->
+              <path d="M 90 82 Q 90 144 94 146 Q 100 148 106 146 Q 110 144 110 82 Z" fill="#facc15" stroke="#ffffff" stroke-width="1.2"/>
+              <!-- Garis alur obor -->
+              <line x1="97" y1="84" x2="98" y2="142" stroke="#eab308" stroke-width="1.5"/>
+              <line x1="103" y1="84" x2="102" y2="142" stroke="#eab308" stroke-width="1.5"/>
+
+              <!-- Kepala Mangkuk Obor -->
+              <ellipse cx="100" cy="80" rx="19" ry="10" fill="#facc15" stroke="#ffffff" stroke-width="1.2"/>
+              <ellipse cx="100" cy="74" rx="17" ry="7" fill="#fef08a" stroke="#ca8a04" stroke-width="1"/>
+              <!-- Gerigi Mahkota Obor -->
+              <path d="M 83 77 Q 87 67 92 73 Q 96 66 100 72 Q 104 66 108 73 Q 113 67 117 77 Z" fill="#facc15" stroke="#ffffff" stroke-width="0.8"/>
+
+              <!-- Lidah Api Merah 5 Puncak Menjulang -->
+              <path d="M 83 73 C 78 57 88 47 91 38 C 93 46 96 35 99 24 C 102 36 106 43 109 37 C 112 46 122 56 117 73 C 112 68 108 71 100 70 C 92 71 88 68 83 73 Z" fill="#dc2626" stroke="#ffffff" stroke-width="1.5"/>
+              <!-- Inti Lidah Api Oranye -->
+              <path d="M 88 69 C 85 58 92 51 94 45 C 96 50 98 42 100 34 C 102 43 105 48 106 44 C 108 51 115 58 112 69 C 107 65 104 67 100 66 C 96 67 93 65 88 69 Z" fill="#f97316"/>
+            </svg>
+          </div>
+
+          <!-- Logo PORSENIGUR -->
+          <div class="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-xl p-1 flex items-center justify-center shadow-md">
+            <div class="text-center">
+              <span class="block text-[9px] font-extrabold text-red-600 tracking-wider">PORSENIGUR</span>
+              <span class="block text-xs font-black text-slate-800">2026</span>
+              <span class="block text-[8px] font-bold text-amber-600">KATAPANG</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Title Information -->
+        <div class="flex-1">
+          <span class="inline-block px-3 py-1 bg-amber-400 text-slate-900 rounded-full text-xs font-bold uppercase tracking-wider mb-1">
+            KATAPANG TEACHING INNOVATION AWARD 2026
+          </span>
+          <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Penjurian Video Pembelajaran</h1>
+          <p class="text-red-100 text-xs sm:text-sm mt-1 font-medium">
+            "Guru Berinovasi, Pembelajaran Mendalam, Menginspirasi Pendidikan"
+          </p>
+          <div class="mt-2 text-xs text-red-200 flex flex-wrap justify-center md:justify-start gap-4">
+            <span><i class="fa-solid fa-scale-balanced mr-1"></i> Aspek Pembelajaran (60%)</span>
+            <span><i class="fa-solid fa-video mr-1"></i> Aspek Produksi Video (40%)</span>
+          </div>
+        </div>
+
+        <!-- Akun Status & Login/Logout Button -->
+        <div class="flex flex-col items-center sm:items-end gap-2">
+          <div id="userBadgeArea" class="bg-black/30 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/20 text-xs flex items-center gap-2.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-slate-400" id="userStatusDot"></span>
+            <div class="text-left">
+              <span id="userRoleText" class="font-bold text-amber-300 block leading-tight">Tamu (Belum Login)</span>
+              <span id="userNameText" class="text-[11px] text-white/80">Silakan login untuk akses</span>
+            </div>
+          </div>
+          <button id="authBtnAction" onclick="handleAuthButtonClick()" 
+            class="px-4 py-1.5 bg-amber-400 hover:bg-amber-300 text-slate-900 font-bold text-xs rounded-lg shadow transition flex items-center gap-1.5">
+            <i class="fa-solid fa-right-to-bracket"></i> <span id="authBtnLabel">Masuk Sistem</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Navigation Tabs Menu -->
+    <div class="max-w-5xl mx-auto px-4 mt-2">
+      <div class="flex border-b border-red-500/50">
+        <button id="tabBtnForm" onclick="switchTab('form')" 
+          class="flex items-center gap-2 px-6 py-3 text-sm font-bold border-b-4 border-amber-400 text-white bg-white/10 rounded-t-xl transition">
+          <i class="fa-solid fa-file-pen"></i> Form Penilaian Juri 
+          <span id="tabLockBadge" class="ml-1 text-[10px] bg-red-950/80 px-2 py-0.5 rounded-full text-amber-300 font-bold"><i class="fa-solid fa-lock"></i> Khusus Juri</span>
+        </button>
+        <button id="tabBtnRekap" onclick="switchTab('rekap')" 
+          class="flex items-center gap-2 px-6 py-3 text-sm font-bold border-b-4 border-transparent text-red-200 hover:text-white hover:bg-white/5 rounded-t-xl transition">
+          <i class="fa-solid fa-ranking-star"></i> Rekapitulasi Pemenang
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Notification Toast -->
+  <div id="toastContainer" class="fixed top-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- Main Container -->
+  <main class="max-w-5xl w-full mx-auto px-4 py-8 flex-1">
+
+    <!-- VIEW 1: FORM PENILAIAN JURI -->
+    <div id="viewForm">
+      <!-- Guard Access: Banner jika Belum Login Juri -->
+      <div id="juryAccessDenied" class="hidden bg-white rounded-2xl p-8 border border-red-200 text-center shadow-sm">
+        <div class="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+          <i class="fa-solid fa-lock"></i>
+        </div>
+        <h3 class="text-xl font-bold text-slate-800 mb-1">Akses Khusus Dewan Juri</h3>
+        <p class="text-sm text-slate-600 max-w-md mx-auto mb-5">
+          Formulir penilaian ini dikunci dan hanya dapat diakses oleh Dewan Juri / Admin yang telah login menggunakan kredensial resmi.
+        </p>
+        <button onclick="openLoginModal('juri')" class="px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-xs transition shadow-md">
+          <i class="fa-solid fa-key mr-1.5"></i> Login sebagai Dewan Juri
+        </button>
+      </div>
+
+      <!-- Form Penjurian -->
+      <form id="judgingForm" onsubmit="handleSubmit(event)" class="space-y-8">
+
+        <!-- SECTION 1: Identitas Penilai & Ranting -->
+        <section class="bg-white rounded-2xl p-6 sm:p-7 shadow-sm border border-slate-200">
+          <div class="flex items-center gap-3 border-b border-slate-100 pb-4 mb-6">
+            <div class="w-10 h-10 rounded-xl bg-red-100 text-red-700 flex items-center justify-center font-bold text-lg">
+              <i class="fa-solid fa-user-check"></i>
+            </div>
+            <div>
+              <h2 class="text-lg font-bold text-slate-900">1. Identitas Penilaian</h2>
+              <p class="text-xs text-slate-500">Pilih Dewan Juri dan Ranting PGRI yang sedang dinilai.</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <!-- Nama Juri -->
+            <div>
+              <label class="block text-xs font-bold uppercase text-slate-700 mb-1.5" for="namaJuri">
+                Nama Dewan Juri <span class="text-red-500">*</span>
+              </label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-slate-400">
+                  <i class="fa-solid fa-user-pen"></i>
+                </span>
+                <input type="text" id="namaJuri" required placeholder="Contoh: Juri 1 (Nama Lengkap)" 
+                  class="w-full pl-10 pr-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-red-500 focus:bg-white focus:outline-none transition">
+              </div>
+            </div>
+
+            <!-- Ranting PGRI yang Dinilai -->
+            <div>
+              <label class="block text-xs font-bold uppercase text-slate-700 mb-1.5" for="namaRanting">
+                Ranting PGRI yang Dinilai <span class="text-red-500">*</span>
+              </label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-slate-400">
+                  <i class="fa-solid fa-landmark"></i>
+                </span>
+                <select id="namaRanting" required class="w-full pl-10 pr-8 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm font-semibold focus:ring-2 focus:ring-red-500 focus:bg-white focus:outline-none transition">
+                  <option value="" disabled selected>-- Pilih Ranting PGRI Katapang --</option>
+                  <option value="Cilampeni-Katapang">Cilampeni-Katapang</option>
+                  <option value="Gandasari-Banyusari">Gandasari-Banyusari</option>
+                  <option value="Sukamukti">Sukamukti</option>
+                  <option value="Pangauban">Pangauban</option>
+                  <option value="Sangkanhurip">Sangkanhurip</option>
+                  <option value="SMPN 1 Katapang">SMPN 1 Katapang</option>
+                  <option value="SMPN 2 Katapang">SMPN 2 Katapang</option>
+                  <option value="SMPN 3 Katapang">SMPN 3 Katapang</option>
+                  <option value="IGTKI">IGTKI</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Judul / Materi Video -->
+            <div class="md:col-span-2">
+              <label class="block text-xs font-bold uppercase text-slate-700 mb-1.5" for="judulVideo">
+                Judul Video / Topik Pembelajaran Inovatif
+              </label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-slate-400">
+                  <i class="fa-solid fa-heading"></i>
+                </span>
+                <input type="text" id="judulVideo" placeholder="Contoh: Praktik Pembelajaran Sains Berbasis IFP & Mindful Learning" 
+                  class="w-full pl-10 pr-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-red-500 focus:bg-white focus:outline-none transition">
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 2: ASPEK PEMBELAJARAN (60 POIN) -->
+        <section class="bg-white rounded-2xl p-6 sm:p-7 shadow-sm border border-slate-200">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-slate-100 pb-4 mb-6 gap-2">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-lg">
+                <i class="fa-solid fa-book-open-reader"></i>
+              </div>
+              <div>
+                <h2 class="text-lg font-bold text-slate-900">A. Aspek Pembelajaran</h2>
+                <p class="text-xs text-slate-500">Bobot total: 60 Poin (7 Komponen Penilaian)</p>
+              </div>
+            </div>
+            <div class="px-3 py-1 bg-emerald-50 text-emerald-800 rounded-lg text-sm font-bold border border-emerald-200">
+              Subtotal: <span id="subtotalA" class="text-base font-extrabold text-emerald-600">0</span> / 60
+            </div>
+          </div>
+
+          <div class="space-y-5">
+
+            <!-- 1. Perencanaan & Kejelasan (Bobot 5) -->
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 hover:border-slate-300 transition">
+              <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-2">
+                <div>
+                  <span class="inline-block text-xs font-bold text-slate-500 mr-1.5">No. 1</span>
+                  <span class="text-sm font-bold text-slate-800">Perencanaan & Kejelasan Pembelajaran</span>
+                  <p class="text-xs text-slate-500 mt-0.5">Kesesuaian tujuan, kejelasan langkah pembuka, inti, penutup, dan integrasi modul ajar/RPP.</p>
+                </div>
+                <div class="flex items-center gap-2 self-end sm:self-center">
+                  <span class="text-xs font-semibold text-slate-400">Maks. 5</span>
+                  <input type="number" id="num_a1" min="0" max="5" step="0.5" value="4.0" oninput="syncScore('a1', this.value)"
+                    class="w-16 text-center font-bold text-sm py-1 border border-slate-300 rounded-lg bg-white text-slate-800 focus:ring-1 focus:ring-red-500">
+                </div>
+              </div>
+              <div class="flex items-center gap-3 mt-3">
+                <span class="text-xs text-slate-400 font-semibold">0</span>
+                <input type="range" id="rng_a1" min="0" max="5" step="0.5" value="4.0" oninput="syncScore('a1', this.value)" class="flex-1">
+                <span class="text-xs text-slate-400 font-semibold">5</span>
+              </div>
+            </div>
+
+            <!-- 2. Mindful Learning (Bobot 10) -->
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 hover:border-slate-300 transition">
+              <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-2">
+                <div>
+                  <span class="inline-block text-xs font-bold text-slate-500 mr-1.5">No. 2</span>
+                  <span class="text-sm font-bold text-slate-800">Mindful Learning</span>
+                  <p class="text-xs text-slate-500 mt-0.5">Peserta didik belajar secara sadar, fokus, aktif berpikir mendalam, mengeksplorasi masalah & berrefleksi.</p>
+                </div>
+                <div class="flex items-center gap-2 self-end sm:self-center">
+                  <span class="text-xs font-semibold text-slate-400">Maks. 10</span>
+                  <input type="number" id="num_a2" min="0" max="10" step="0.5" value="8.0" oninput="syncScore('a2', this.value)"
+                    class="w-16 text-center font-bold text-sm py-1 border border-slate-300 rounded-lg bg-white text-slate-800 focus:ring-1 focus:ring-red-500">
+                </div>
+              </div>
+              <div class="flex items-center gap-3 mt-3">
+                <span class="text-xs text-slate-400 font-semibold">0</span>
+                <input type="range" id="rng_a2" min="0" max="10" step="0.5" value="8.0" oninput="syncScore('a2', this.value)" class="flex-1">
+                <span class="text-xs text-slate-400 font-semibold">10</span>
+              </div>
+            </div>
+
+            <!-- 3. Meaningful Learning (Bobot 10) -->
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 hover:border-slate-300 transition">
+              <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-2">
+                <div>
+                  <span class="inline-block text-xs font-bold text-slate-500 mr-1.5">No. 3</span>
+                  <span class="text-sm font-bold text-slate-800">Meaningful Learning</span>
+                  <p class="text-xs text-slate-500 mt-0.5">Pembelajaran dikaitkan dengan kehidupan nyata, pengalaman kontekstual, dan kebutuhan siswa.</p>
+                </div>
+                <div class="flex items-center gap-2 self-end sm:self-center">
+                  <span class="text-xs font-semibold text-slate-400">Maks. 10</span>
+                  <input type="number" id="num_a3" min="0" max="10" step="0.5" value="8.5" oninput="syncScore('a3', this.value)"
+                    class="w-16 text-center font-bold text-sm py-1 border border-slate-300 rounded-lg bg-white text-slate-800 focus:ring-1 focus:ring-red-500">
+                </div>
+              </div>
+              <div class="flex items-center gap-3 mt-3">
+                <span class="text-xs text-slate-400 font-semibold">0</span>
+                <input type="range" id="rng_a3" min="0" max="10" step="0.5" value="8.5" oninput="syncScore('a3', this.value)" class="flex-1">
+                <span class="text-xs text-slate-400 font-semibold">10</span>
+              </div>
+            </div>
+
+            <!-- 4. Joyful Learning (Bobot 10) -->
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 hover:border-slate-300 transition">
+              <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-2">
+                <div>
+                  <span class="inline-block text-xs font-bold text-slate-500 mr-1.5">No. 4</span>
+                  <span class="text-sm font-bold text-slate-800">Joyful Learning</span>
+                  <p class="text-xs text-slate-500 mt-0.5">Pembelajaran berlangsung aktif, positif, aman, komunikatif, inklusif, dan menyenangkan.</p>
+                </div>
+                <div class="flex items-center gap-2 self-end sm:self-center">
+                  <span class="text-xs font-semibold text-slate-400">Maks. 10</span>
+                  <input type="number" id="num_a4" min="0" max="10" step="0.5" value="8.0" oninput="syncScore('a4', this.value)"
+                    class="w-16 text-center font-bold text-sm py-1 border border-slate-300 rounded-lg bg-white text-slate-800 focus:ring-1 focus:ring-red-500">
+                </div>
+              </div>
+              <div class="flex items-center gap-3 mt-3">
+                <span class="text-xs text-slate-400 font-semibold">0</span>
+                <input type="range" id="rng_a4" min="0" max="10" step="0.5" value="8.0" oninput="syncScore('a4', this.value)" class="flex-1">
+                <span class="text-xs text-slate-400 font-semibold">10</span>
+              </div>
+            </div>
+
+            <!-- 5. Interaktivitas & Keterlibatan Peserta Didik (Bobot 10) -->
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 hover:border-slate-300 transition">
+              <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-2">
+                <div>
+                  <span class="inline-block text-xs font-bold text-slate-500 mr-1.5">No. 5</span>
+                  <span class="text-sm font-bold text-slate-800">Interaktivitas & Keterlibatan Peserta Didik</span>
+                  <p class="text-xs text-slate-500 mt-0.5">Interaksi dua arah guru-siswa, kolaborasi antar siswa, keterlibatan aktif semua anak.</p>
+                </div>
+                <div class="flex items-center gap-2 self-end sm:self-center">
+                  <span class="text-xs font-semibold text-slate-400">Maks. 10</span>
+                  <input type="number" id="num_a5" min="0" max="10" step="0.5" value="8.5" oninput="syncScore('a5', this.value)"
+                    class="w-16 text-center font-bold text-sm py-1 border border-slate-300 rounded-lg bg-white text-slate-800 focus:ring-1 focus:ring-red-500">
+                </div>
+              </div>
+              <div class="flex items-center gap-3 mt-3">
+                <span class="text-xs text-slate-400 font-semibold">0</span>
+                <input type="range" id="rng_a5" min="0" max="10" step="0.5" value="8.5" oninput="syncScore('a5', this.value)" class="flex-1">
+                <span class="text-xs text-slate-400 font-semibold">10</span>
+              </div>
+            </div>
+
+            <!-- 6. Inovasi Strategi & Media Pembelajaran (Bobot 10) -->
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 hover:border-slate-300 transition">
+              <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-2">
+                <div>
+                  <span class="inline-block text-xs font-bold text-slate-500 mr-1.5">No. 6</span>
+                  <span class="text-sm font-bold text-slate-800">Inovasi Strategi & Media (Termasuk IFP)</span>
+                  <p class="text-xs text-slate-500 mt-0.5">Kreativitas metode, pemanfaatan Interactive Flat Panel (IFP), serta integrasi aplikasi teknologi.</p>
+                </div>
+                <div class="flex items-center gap-2 self-end sm:self-center">
+                  <span class="text-xs font-semibold text-slate-400">Maks. 10</span>
+                  <input type="number" id="num_a6" min="0" max="10" step="0.5" value="9.0" oninput="syncScore('a6', this.value)"
+                    class="w-16 text-center font-bold text-sm py-1 border border-slate-300 rounded-lg bg-white text-slate-800 focus:ring-1 focus:ring-red-500">
+                </div>
+              </div>
+              <div class="flex items-center gap-3 mt-3">
+                <span class="text-xs text-slate-400 font-semibold">0</span>
+                <input type="range" id="rng_a6" min="0" max="10" step="0.5" value="9.0" oninput="syncScore('a6', this.value)" class="flex-1">
+                <span class="text-xs text-slate-400 font-semibold">10</span>
+              </div>
+            </div>
+
+            <!-- 7. Refleksi & Penguatan Pembelajaran (Bobot 5) -->
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 hover:border-slate-300 transition">
+              <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-2">
+                <div>
+                  <span class="inline-block text-xs font-bold text-slate-500 mr-1.5">No. 7</span>
+                  <span class="text-sm font-bold text-slate-800">Refleksi & Penguatan Pembelajaran</span>
+                  <p class="text-xs text-slate-500 mt-0.5">Tindak lanjut, kesimpulan bermakna, umpan balik konstruktif, serta penguatan konsep materi.</p>
+                </div>
+                <div class="flex items-center gap-2 self-end sm:self-center">
+                  <span class="text-xs font-semibold text-slate-400">Maks. 5</span>
+                  <input type="number" id="num_a7" min="0" max="5" step="0.5" value="4.0" oninput="syncScore('a7', this.value)"
+                    class="w-16 text-center font-bold text-sm py-1 border border-slate-300 rounded-lg bg-white text-slate-800 focus:ring-1 focus:ring-red-500">
+                </div>
+              </div>
+              <div class="flex items-center gap-3 mt-3">
+                <span class="text-xs text-slate-400 font-semibold">0</span>
+                <input type="range" id="rng_a7" min="0" max="5" step="0.5" value="4.0" oninput="syncScore('a7', this.value)" class="flex-1">
+                <span class="text-xs text-slate-400 font-semibold">5</span>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- SECTION 3: ASPEK PRODUKSI VIDEO (40 POIN) -->
+        <section class="bg-white rounded-2xl p-6 sm:p-7 shadow-sm border border-slate-200">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-slate-100 pb-4 mb-6 gap-2">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-lg">
+                <i class="fa-solid fa-clapperboard"></i>
+              </div>
+              <div>
+                <h2 class="text-lg font-bold text-slate-900">B. Aspek Produksi Video</h2>
+                <p class="text-xs text-slate-500">Bobot total: 40 Poin (5 Komponen Penilaian)</p>
+              </div>
+            </div>
+            <div class="px-3 py-1 bg-blue-50 text-blue-800 rounded-lg text-sm font-bold border border-blue-200">
+              Subtotal: <span id="subtotalB" class="text-base font-extrabold text-blue-600">0</span> / 40
+            </div>
+          </div>
+
+          <div class="space-y-5">
+
+            <!-- 1. Kualitas visual & Pengambilan Gambar (Bobot 10) -->
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 hover:border-slate-300 transition">
+              <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-2">
+                <div>
+                  <span class="inline-block text-xs font-bold text-slate-500 mr-1.5">No. 1</span>
+                  <span class="text-sm font-bold text-slate-800">Kualitas Visual & Pengambilan Gambar</span>
+                  <p class="text-xs text-slate-500 mt-0.5">Ketajaman resolusi (HD/Full HD), kestabilan video, variasi sudut pengambilan gambar (angle & framing).</p>
+                </div>
+                <div class="flex items-center gap-2 self-end sm:self-center">
+                  <span class="text-xs font-semibold text-slate-400">Maks. 10</span>
+                  <input type="number" id="num_b1" min="0" max="10" step="0.5" value="8.0" oninput="syncScore('b1', this.value)"
+                    class="w-16 text-center font-bold text-sm py-1 border border-slate-300 rounded-lg bg-white text-slate-800 focus:ring-1 focus:ring-red-500">
+                </div>
+              </div>
+              <div class="flex items-center gap-3 mt-3">
+                <span class="text-xs text-slate-400 font-semibold">0</span>
+                <input type="range" id="rng_b1" min="0" max="10" step="0.5" value="8.0" oninput="syncScore('b1', this.value)" class="flex-1">
+                <span class="text-xs text-slate-400 font-semibold">10</span>
+              </div>
+            </div>
+
+            <!-- 2. Kualitas Audio (Bobot 8) -->
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 hover:border-slate-300 transition">
+              <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-2">
+                <div>
+                  <span class="inline-block text-xs font-bold text-slate-500 mr-1.5">No. 2</span>
+                  <span class="text-sm font-bold text-slate-800">Kualitas Audio</span>
+                  <p class="text-xs text-slate-500 mt-0.5">Kejelasan vokal guru dan siswa, keseimbangan volume musik pengiring (BGM) tanpa menutupi narasi.</p>
+                </div>
+                <div class="flex items-center gap-2 self-end sm:self-center">
+                  <span class="text-xs font-semibold text-slate-400">Maks. 8</span>
+                  <input type="number" id="num_b2" min="0" max="8" step="0.5" value="6.5" oninput="syncScore('b2', this.value)"
+                    class="w-16 text-center font-bold text-sm py-1 border border-slate-300 rounded-lg bg-white text-slate-800 focus:ring-1 focus:ring-red-500">
+                </div>
+              </div>
+              <div class="flex items-center gap-3 mt-3">
+                <span class="text-xs text-slate-400 font-semibold">0</span>
+                <input type="range" id="rng_b2" min="0" max="8" step="0.5" value="6.5" oninput="syncScore('b2', this.value)" class="flex-1">
+                <span class="text-xs text-slate-400 font-semibold">8</span>
+              </div>
+            </div>
+
+            <!-- 3. Pencahayaan (Bobot 6) -->
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 hover:border-slate-300 transition">
+              <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-2">
+                <div>
+                  <span class="inline-block text-xs font-bold text-slate-500 mr-1.5">No. 3</span>
+                  <span class="text-sm font-bold text-slate-800">Pencahayaan (Lighting)</span>
+                  <p class="text-xs text-slate-500 mt-0.5">Keterangan visual cukup, warna natural, tidak backlight, ekspresi wajah dan konten terlihat jelas.</p>
+                </div>
+                <div class="flex items-center gap-2 self-end sm:self-center">
+                  <span class="text-xs font-semibold text-slate-400">Maks. 6</span>
+                  <input type="number" id="num_b3" min="0" max="6" step="0.5" value="5.0" oninput="syncScore('b3', this.value)"
+                    class="w-16 text-center font-bold text-sm py-1 border border-slate-300 rounded-lg bg-white text-slate-800 focus:ring-1 focus:ring-red-500">
+                </div>
+              </div>
+              <div class="flex items-center gap-3 mt-3">
+                <span class="text-xs text-slate-400 font-semibold">0</span>
+                <input type="range" id="rng_b3" min="0" max="6" step="0.5" value="5.0" oninput="syncScore('b3', this.value)" class="flex-1">
+                <span class="text-xs text-slate-400 font-semibold">6</span>
+              </div>
+            </div>
+
+            <!-- 4. Editing & Alur Video (Bobot 8) -->
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 hover:border-slate-300 transition">
+              <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-2">
+                <div>
+                  <span class="inline-block text-xs font-bold text-slate-500 mr-1.5">No. 4</span>
+                  <span class="text-sm font-bold text-slate-800">Editing & Alur Video</span>
+                  <p class="text-xs text-slate-500 mt-0.5">Kelancaran transisi, kesesuaian durasi (7-10 menit, toleransi 30 dtk), dan ritme alur pembelajaran.</p>
+                </div>
+                <div class="flex items-center gap-2 self-end sm:self-center">
+                  <span class="text-xs font-semibold text-slate-400">Maks. 8</span>
+                  <input type="number" id="num_b4" min="0" max="8" step="0.5" value="6.5" oninput="syncScore('b4', this.value)"
+                    class="w-16 text-center font-bold text-sm py-1 border border-slate-300 rounded-lg bg-white text-slate-800 focus:ring-1 focus:ring-red-500">
+                </div>
+              </div>
+              <div class="flex items-center gap-3 mt-3">
+                <span class="text-xs text-slate-400 font-semibold">0</span>
+                <input type="range" id="rng_b4" min="0" max="8" step="0.5" value="6.5" oninput="syncScore('b4', this.value)" class="flex-1">
+                <span class="text-xs text-slate-400 font-semibold">8</span>
+              </div>
+            </div>
+
+            <!-- 5. Kreativitas & Estetika (Bobot 8) -->
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 hover:border-slate-300 transition">
+              <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-2">
+                <div>
+                  <span class="inline-block text-xs font-bold text-slate-500 mr-1.5">No. 5</span>
+                  <span class="text-sm font-bold text-slate-800">Kreativitas & Estetika</span>
+                  <p class="text-xs text-slate-500 mt-0.5">Daya tarik visual, penataan teks overlay informatif, tipografi yang pas, keunikan penyajian konten.</p>
+                </div>
+                <div class="flex items-center gap-2 self-end sm:self-center">
+                  <span class="text-xs font-semibold text-slate-400">Maks. 8</span>
+                  <input type="number" id="num_b5" min="0" max="8" step="0.5" value="7.0" oninput="syncScore('b5', this.value)"
+                    class="w-16 text-center font-bold text-sm py-1 border border-slate-300 rounded-lg bg-white text-slate-800 focus:ring-1 focus:ring-red-500">
+                </div>
+              </div>
+              <div class="flex items-center gap-3 mt-3">
+                <span class="text-xs text-slate-400 font-semibold">0</span>
+                <input type="range" id="rng_b5" min="0" max="8" step="0.5" value="7.0" oninput="syncScore('b5', this.value)" class="flex-1">
+                <span class="text-xs text-slate-400 font-semibold">8</span>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- SECTION 4: Catatan & Rekomendasi Juri -->
+        <section class="bg-white rounded-2xl p-6 sm:p-7 shadow-sm border border-slate-200">
+          <div class="flex items-center gap-3 border-b border-slate-100 pb-4 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-lg">
+              <i class="fa-solid fa-comment-dots"></i>
+            </div>
+            <div>
+              <h2 class="text-lg font-bold text-slate-900">Catatan & Masukan Dewan Juri</h2>
+              <p class="text-xs text-slate-500">Apresiasi inovasi atau aspek teknis yang perlu ditingkatkan (opsional).</p>
+            </div>
+          </div>
+
+          <textarea id="catatanJuri" rows="3" placeholder="Tulis catatan apresiasi atau saran konstruktif untuk ranting ini..."
+            class="w-full p-3.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-red-500 focus:bg-white focus:outline-none transition"></textarea>
+        </section>
+
+        <!-- STICKY SUMMARY & SUBMIT BAR -->
+        <div class="sticky bottom-4 z-40 bg-white/95 backdrop-blur-md rounded-2xl p-4 sm:p-5 shadow-2xl border border-slate-200">
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+            
+            <div class="flex items-center gap-4 w-full sm:w-auto justify-around sm:justify-start">
+              <div class="text-center sm:text-left">
+                <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">Total Nilai Juri</span>
+                <div class="flex items-baseline gap-1">
+                  <span id="grandTotal" class="text-3xl sm:text-4xl font-black text-red-600">0.0</span>
+                  <span class="text-sm font-bold text-slate-400">/ 100</span>
+                </div>
+              </div>
+
+              <div class="h-10 w-px bg-slate-200"></div>
+
+              <div class="text-xs text-slate-500 space-y-0.5">
+                <div>Aspek Pembelajaran: <strong id="summaryA" class="text-emerald-700">0</strong>/60</div>
+                <div>Aspek Produksi Video: <strong id="summaryB" class="text-blue-700">0</strong>/40</div>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3 w-full sm:w-auto">
+              <button type="button" onclick="resetFormConfirmation()" 
+                class="px-4 py-3 rounded-xl border border-slate-300 text-slate-600 hover:bg-slate-100 font-bold text-sm transition">
+                <i class="fa-solid fa-rotate-left mr-1"></i> Reset
+              </button>
+
+              <button type="submit" id="submitBtn" 
+                class="flex-1 sm:flex-none px-6 py-3 rounded-xl bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold text-sm shadow-lg shadow-red-600/30 active:scale-95 transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>Kirim Nilai ke Spreadsheet</span>
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- VIEW 2: REKAPITULASI PEMENANG (2 JURI REALTIME) -->
+    <div id="viewRekap" class="hidden space-y-6">
+      
+      <!-- Top Bar Rekapitulasi -->
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div>
+          <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-xs font-bold uppercase tracking-wider">
+            Akumulasi 2 Dewan Juri
+          </span>
+          <h2 class="text-xl font-black text-slate-900 mt-1">Papan Peringkat & Rekapitulasi Nilai</h2>
+          <p class="text-xs text-slate-500">Membaca langsung dari spreadsheet dan menghitung rata-rata nilai dari 2 Juri.</p>
+        </div>
+
+        <div class="flex items-center gap-3 w-full md:w-auto">
+          <button onclick="fetchRealtimeRekap()" id="btnRefresh" 
+            class="px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold shadow-md transition flex items-center gap-2">
+            <i class="fa-solid fa-arrows-rotate" id="refreshIcon"></i> Refresh Data Realtime
+          </button>
+          <!-- Tombol Cetak Rekap: Hanya muncul jika login sebagai Juri / Admin -->
+          <button id="btnPrintRekap" onclick="window.print()" 
+            class="hidden px-4 py-2.5 bg-slate-800 hover:bg-slate-900 text-white rounded-xl text-xs font-bold transition flex items-center gap-2">
+            <i class="fa-solid fa-print"></i> Cetak Rekap
+          </button>
+        </div>
+      </div>
+
+      <!-- Podium Juara 1, 2, 3 -->
+      <div id="podiumArea" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Akan dirender dinamis via JavaScript -->
+      </div>
+
+      <!-- Tabel Lengkap Seluruh Ranting -->
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+        <div class="p-5 border-b border-slate-100 flex items-center justify-between">
+          <h3 class="font-bold text-slate-900 text-sm sm:text-base flex items-center gap-2">
+            <i class="fa-solid fa-table-list text-red-600"></i> Tabel Peringkat Seluruh Ranting PGRI Katapang
+          </h3>
+          <span id="rekapCountBadge" class="text-xs bg-slate-100 text-slate-700 font-bold px-2.5 py-1 rounded-lg">
+            9 Ranting Terdaftar
+          </span>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs sm:text-sm">
+            <thead class="bg-slate-50 text-slate-600 font-bold uppercase text-[11px] border-b border-slate-200">
+              <tr>
+                <th class="py-3.5 px-4 text-center">Peringkat</th>
+                <th class="py-3.5 px-4">Ranting PGRI</th>
+                <th class="py-3.5 px-3 text-center">Nilai Juri 1</th>
+                <th class="py-3.5 px-3 text-center">Nilai Juri 2</th>
+                <th class="py-3.5 px-3 text-center">Rata-rata Skor</th>
+                <th class="py-3.5 px-4 text-center">Status Juri</th>
+                <th class="py-3.5 px-4 text-center">Kategori Juara</th>
+              </tr>
+            </thead>
+            <tbody id="tableRekapBody" class="divide-y divide-slate-100">
+              <!-- Render Data -->
+              <tr>
+                <td colspan="7" class="py-10 text-center text-slate-400">
+                  <i class="fa-solid fa-spinner fa-spin text-2xl mb-2 text-slate-300 block"></i>
+                  Memuat data penilaian dari Google Spreadsheet...
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Log Aktivitas Penilaian Masuk -->
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+        <h4 class="font-bold text-slate-900 text-sm mb-3 flex items-center gap-2">
+          <i class="fa-solid fa-clock-rotate-left text-amber-500"></i> Log Masuk Nilai dari Dewan Juri
+        </h4>
+        <div id="logEntries" class="space-y-2 max-h-60 overflow-y-auto text-xs text-slate-600">
+          <p class="text-slate-400 italic">Belum ada catatan aktivitas penilaian terbaru.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Modal Konfirmasi / Sukses -->
+    <div id="modalSuccess" class="fixed inset-0 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 z-50 hidden">
+      <div class="bg-white rounded-2xl max-w-md w-full p-6 text-center shadow-2xl transform transition-all">
+        <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+          <i class="fa-solid fa-check"></i>
+        </div>
+        <h3 class="text-xl font-bold text-slate-900 mb-1">Nilai Berhasil Dikirim!</h3>
+        <p class="text-sm text-slate-600 mb-4" id="modalSuccessMsg">
+          Data penilaian telah tersimpan rapi ke server penjurian PORSENIGUR PGRI Katapang.
+        </p>
+        <div class="bg-slate-50 rounded-xl p-3 text-xs text-left text-slate-700 space-y-1 mb-5 border border-slate-200">
+          <p><strong>Nama Juri:</strong> <span id="resJuri">-</span></p>
+          <p><strong>Ranting:</strong> <span id="resRanting">-</span></p>
+          <p><strong>Total Nilai:</strong> <span id="resSkor" class="font-bold text-red-600 text-sm">-</span></p>
+        </div>
+        <div class="flex gap-2">
+          <button onclick="closeModalAndReset()" class="flex-1 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-xs transition">
+            Nilai Ranting Lain
+          </button>
+          <button onclick="closeModalAndGoRekap()" class="flex-1 py-2.5 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-xl text-xs transition">
+            Lihat Rekapitulasi
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL AUTHENTICATION (LOGIN JURI & PESERTA KTA) -->
+    <div id="modalAuth" class="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 z-50 hidden">
+      <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl relative border border-slate-200">
+        
+        <!-- Close Button -->
+        <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+
+        <!-- Auth Tabs Toggle -->
+        <div class="flex border-b border-slate-200 mb-5">
+          <button id="authTabBtnJuri" onclick="switchAuthTab('juri')" 
+            class="flex-1 pb-2.5 font-bold text-xs uppercase tracking-wider text-red-600 border-b-2 border-red-600 transition">
+            <i class="fa-solid fa-user-shield mr-1"></i> Dewan Juri
+          </button>
+          <button id="authTabBtnPeserta" onclick="switchAuthTab('peserta')" 
+            class="flex-1 pb-2.5 font-bold text-xs uppercase tracking-wider text-slate-400 border-b-2 border-transparent hover:text-slate-700 transition">
+            <i class="fa-solid fa-id-card mr-1"></i> Login KTA
+          </button>
+          <button id="authTabBtnDaftar" onclick="switchAuthTab('daftar')" 
+            class="flex-1 pb-2.5 font-bold text-xs uppercase tracking-wider text-slate-400 border-b-2 border-transparent hover:text-slate-700 transition">
+            <i class="fa-solid fa-user-plus mr-1"></i> Daftar KTA
+          </button>
+        </div>
+
+        <!-- FORM 1: LOGIN JURI -->
+        <div id="authPanelJuri" class="space-y-4">
+          <div class="text-center mb-3">
+            <h3 class="text-base font-extrabold text-slate-800">Login Dewan Juri / Admin</h3>
+            <p class="text-xs text-slate-500">Masukkan akun juri untuk membuka akses penilaian.</p>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Username Juri</label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400"><i class="fa-solid fa-user"></i></span>
+              <input type="text" id="inputJuriUser" placeholder="Masukkan username (juri)" 
+                class="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-red-500 focus:outline-none">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Password</label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400"><i class="fa-solid fa-lock"></i></span>
+              <input type="password" id="inputJuriPass" placeholder="Masukkan password" 
+                class="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-red-500 focus:outline-none">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Nama Juri (Tampil di Form)</label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400"><i class="fa-solid fa-user-tag"></i></span>
+              <input type="text" id="inputJuriName" placeholder="Contoh: Juri 1 (Drs. Ahmad, M.Pd)" 
+                class="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-red-500 focus:outline-none">
+            </div>
+          </div>
+
+          <button onclick="processJuriLogin()" 
+            class="w-full py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-xs shadow-md transition">
+            Masuk Sebagai Juri
+          </button>
+        </div>
+
+        <!-- FORM 2: LOGIN PESERTA (NO KTA) -->
+        <div id="authPanelPeserta" class="space-y-4 hidden">
+          <div class="text-center mb-3">
+            <h3 class="text-base font-extrabold text-slate-800">Login Peserta Lomba</h3>
+            <p class="text-xs text-slate-500">Masukkan Nomor KTA PGRI Anda yang telah terdaftar.</p>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Nomor KTA PGRI</label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400"><i class="fa-solid fa-address-card"></i></span>
+              <input type="text" id="inputPesertaKta" placeholder="Contoh: 3204xxxxxxxxxx" 
+                class="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+            </div>
+            <p class="text-[11px] text-slate-500 mt-1">Belum punya akun? <a href="javascript:void(0)" onclick="switchAuthTab('daftar')" class="text-emerald-600 font-bold hover:underline">Daftarkan KTA di sini</a>.</p>
+          </div>
+
+          <button onclick="processPesertaLogin()" 
+            class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs shadow-md transition">
+            Masuk Sebagai Peserta
+          </button>
+        </div>
+
+        <!-- FORM 3: PENDAFTARAN KTA PESERTA -->
+        <div id="authPanelDaftar" class="space-y-4 hidden">
+          <div class="text-center mb-2">
+            <h3 class="text-base font-extrabold text-slate-800">Pendaftaran KTA Peserta</h3>
+            <p class="text-xs text-slate-500">Daftarkan Nomor KTA PGRI Anda sebelum login ke sistem.</p>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Nomor KTA PGRI <span class="text-red-500">*</span></label>
+            <input type="text" id="regNoKta" required placeholder="Contoh: 3204012345678" 
+              class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Nama Lengkap Peserta / Guru <span class="text-red-500">*</span></label>
+            <input type="text" id="regNamaLengkap" required placeholder="Nama lengkap beserta gelar" 
+              class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Asal Ranting PGRI <span class="text-red-500">*</span></label>
+            <select id="regNamaRanting" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+              <option value="Cilampeni-Katapang">Cilampeni-Katapang</option>
+              <option value="Gandasari-Banyusari">Gandasari-Banyusari</option>
+              <option value="Sukamukti">Sukamukti</option>
+              <option value="Pangauban">Pangauban</option>
+              <option value="Sangkanhurip">Sangkanhurip</option>
+              <option value="SMPN 1 Katapang">SMPN 1 Katapang</option>
+              <option value="SMPN 2 Katapang">SMPN 2 Katapang</option>
+              <option value="SMPN 3 Katapang">SMPN 3 Katapang</option>
+              <option value="IGTKI">IGTKI</option>
+            </select>
+          </div>
+
+          <button id="btnDaftarKta" onclick="processDaftarKta()" 
+            class="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-xs shadow-md transition flex items-center justify-center gap-2">
+            <span>Daftarkan Nomor KTA</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-6 border-t border-slate-800 mt-12 text-center text-xs">
+    <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div>
+        <p class="font-semibold text-slate-300">PORSENIGUR PGRI Cabang Katapang 2026</p>
+        <p class="text-[11px] text-slate-500 mt-0.5">Kompetisi Video Praktik Pembelajaran Inovatif Hari Guru Nasional</p>
+      </div>
+      <div class="text-[11px] text-slate-500">
+        Sistem Terintegrasi Dewan Juri & Panitia
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT LOGIC -->
+  <script>
+    // URL Web App Google Apps Script tersimpan langsung di dalam kode aplikasi (tanpa link spreadsheet publik)
+    const APP_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyJ6QgjfNg1nM29piJH3BN3oAltvbL5O5YS3UH6NzATw9nYTvHYB4pa98Jjos0fV2mpyA/exec"; 
+
+    // Session State User
+    let currentUser = {
+      isLoggedIn: false,
+      role: 'guest', // 'juri', 'peserta', 'guest'
+      name: '',
+      kta: '',
+      ranting: ''
+    };
+
+    // Daftar KTA terdaftar (lokal cache & synced dari spreadsheet)
+    let registeredKtaList = [
+      { noKta: "320401", nama: "Guru Peserta 1", ranting: "Cilampeni-Katapang" }
+    ];
+
+    // Daftar 9 Ranting Resmi Sesuai Arahan Panitia
+    const LIST_RANTING = [
+      "Cilampeni-Katapang",
+      "Gandasari-Banyusari",
+      "Sukamukti",
+      "Pangauban",
+      "Sangkanhurip",
+      "SMPN 1 Katapang",
+      "SMPN 2 Katapang",
+      "SMPN 3 Katapang",
+      "IGTKI"
+    ];
+
+    // Batasan Nilai Sesuai Juknis
+    const CRITERIA_CONFIG = {
+      // Aspek Pembelajaran (Total 60)
+      a1: { max: 5, label: "Perencanaan & kejelasan pembelajaran" },
+      a2: { max: 10, label: "Mindful Learning" },
+      a3: { max: 10, label: "Meaningful Learning" },
+      a4: { max: 10, label: "Joyful Learning" },
+      a5: { max: 10, label: "Interaktivitas & keterlibatan peserta didik" },
+      a6: { max: 10, label: "Inovasi strategi & media pembelajaran" },
+      a7: { max: 5, label: "Refleksi & penguatan pembelajaran" },
+      // Aspek Produksi Video (Total 40)
+      b1: { max: 10, label: "Kualitas visual & pengambilan gambar" },
+      b2: { max: 8, label: "Kualitas audio" },
+      b3: { max: 6, label: "Pencahayaan" },
+      b4: { max: 8, label: "Editing & alur video" },
+      b5: { max: 8, label: "Kreativitas & estetika" }
+    };
+
+    const STORAGE_KEY_SCRIPT_URL = "pgri_katapang_script_url";
+    const STORAGE_KEY_AUTH = "pgri_katapang_auth_user";
+    const STORAGE_KEY_KTA = "pgri_katapang_kta_list";
+    let cachedSubmissions = []; // Data lokal dari spreadsheet
+
+    window.addEventListener("DOMContentLoaded", () => {
+      calculateTotals();
+
+      // Muat daftar KTA dari cache browser
+      const savedKta = localStorage.getItem(STORAGE_KEY_KTA);
+      if (savedKta) {
+        try { registeredKtaList = JSON.parse(savedKta); } catch(e){}
+      }
+
+      // Cek sesi login sebelumnya
+      const savedAuth = sessionStorage.getItem(STORAGE_KEY_AUTH);
+      if (savedAuth) {
+        try {
+          currentUser = JSON.parse(savedAuth);
+        } catch(e){}
+      }
+
+      updateUserUI();
+
+      // Jika belum login juri, default arahkan ke Rekapitulasi agar nyaman dilihat peserta / publik
+      if (currentUser.role !== 'juri') {
+        switchTab('rekap');
+      }
+    });
+
+    // ==========================================
+    // SISTEM LOGIN & AUTHENTICATION
+    // ==========================================
+    function openLoginModal(tab = 'juri') {
+      document.getElementById("modalAuth").classList.remove("hidden");
+      switchAuthTab(tab);
+    }
+
+    function closeAuthModal() {
+      document.getElementById("modalAuth").classList.add("hidden");
+    }
+
+    function switchAuthTab(tab) {
+      const panelJuri = document.getElementById("authPanelJuri");
+      const panelPeserta = document.getElementById("authPanelPeserta");
+      const panelDaftar = document.getElementById("authPanelDaftar");
+
+      const btnJuri = document.getElementById("authTabBtnJuri");
+      const btnPeserta = document.getElementById("authTabBtnPeserta");
+      const btnDaftar = document.getElementById("authTabBtnDaftar");
+
+      [panelJuri, panelPeserta, panelDaftar].forEach(p => p.classList.add("hidden"));
+      [btnJuri, btnPeserta, btnDaftar].forEach(b => {
+        b.className = "flex-1 pb-2.5 font-bold text-xs uppercase tracking-wider text-slate-400 border-b-2 border-transparent hover:text-slate-700 transition";
+      });
+
+      if (tab === 'juri') {
+        panelJuri.classList.remove("hidden");
+        btnJuri.className = "flex-1 pb-2.5 font-bold text-xs uppercase tracking-wider text-red-600 border-b-2 border-red-600 transition";
+      } else if (tab === 'peserta') {
+        panelPeserta.classList.remove("hidden");
+        btnPeserta.className = "flex-1 pb-2.5 font-bold text-xs uppercase tracking-wider text-emerald-600 border-b-2 border-emerald-600 transition";
+      } else if (tab === 'daftar') {
+        panelDaftar.classList.remove("hidden");
+        btnDaftar.className = "flex-1 pb-2.5 font-bold text-xs uppercase tracking-wider text-blue-600 border-b-2 border-blue-600 transition";
+      }
+    }
+
+    function handleAuthButtonClick() {
+      if (currentUser.isLoggedIn) {
+        // Logout
+        currentUser = { isLoggedIn: false, role: 'guest', name: '', kta: '', ranting: '' };
+        sessionStorage.removeItem(STORAGE_KEY_AUTH);
+        updateUserUI();
+        switchTab('rekap');
+        showToast("Anda telah keluar dari akun.", "info");
+      } else {
+        openLoginModal('juri');
+      }
+    }
+
+    function processJuriLogin() {
+      const u = document.getElementById("inputJuriUser").value.trim();
+      const p = document.getElementById("inputJuriPass").value.trim();
+      const nama = document.getElementById("inputJuriName").value.trim() || "Dewan Juri";
+
+      if (u === "juri" && p === "juri1985") {
+        currentUser = {
+          isLoggedIn: true,
+          role: 'juri',
+          name: nama,
+          kta: '',
+          ranting: ''
+        };
+        sessionStorage.setItem(STORAGE_KEY_AUTH, JSON.stringify(currentUser));
+        
+        // Auto-fill ke form juri
+        document.getElementById("namaJuri").value = nama;
+
+        updateUserUI();
+        closeAuthModal();
+        switchTab('form');
+        showToast(`Selamat datang, ${nama}! Akses penilaian terbuka.`, "success");
+      } else {
+        showToast("Username atau Password Juri salah! (Gunakan user: juri)", "error");
+      }
+    }
+
+    function processPesertaLogin() {
+      const noKta = document.getElementById("inputPesertaKta").value.trim();
+      if (!noKta) {
+        showToast("Harap masukkan nomor KTA Anda!", "error");
+        return;
+      }
+
+      // Cari KTA di daftar terdaftar
+      const found = registeredKtaList.find(item => String(item.noKta).trim() === noKta);
+
+      if (found) {
+        currentUser = {
+          isLoggedIn: true,
+          role: 'peserta',
+          name: found.nama,
+          kta: found.noKta,
+          ranting: found.ranting
+        };
+        sessionStorage.setItem(STORAGE_KEY_AUTH, JSON.stringify(currentUser));
+        updateUserUI();
+        closeAuthModal();
+        switchTab('rekap');
+        showToast(`Selamat datang, ${found.nama} (${found.ranting})!`, "success");
+      } else {
+        showToast("Nomor KTA belum terdaftar! Silakan daftarkan KTA terlebih dahulu.", "error");
+        switchAuthTab('daftar');
+        document.getElementById("regNoKta").value = noKta;
+      }
+    }
+
+    async function processDaftarKta() {
+      const noKta = document.getElementById("regNoKta").value.trim();
+      const nama = document.getElementById("regNamaLengkap").value.trim();
+      const ranting = document.getElementById("regNamaRanting").value;
+
+      if (!noKta || !nama) {
+        showToast("Mohon lengkapi Nomor KTA dan Nama Lengkap!", "error");
+        return;
+      }
+
+      // Cek apakah sudah ada
+      const exists = registeredKtaList.some(item => String(item.noKta).trim() === noKta);
+      if (exists) {
+        showToast("Nomor KTA tersebut sudah terdaftar! Silakan langsung login.", "info");
+        switchAuthTab('peserta');
+        document.getElementById("inputPesertaKta").value = noKta;
+        return;
+      }
+
+      const newEntry = { noKta, nama, ranting };
+      registeredKtaList.push(newEntry);
+      localStorage.setItem(STORAGE_KEY_KTA, JSON.stringify(registeredKtaList));
+
+      // Kirim data registrasi ke Google Apps Script di Spreadsheet
+      const btn = document.getElementById("btnDaftarKta");
+      btn.disabled = true;
+      btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin mr-1"></i> Mendaftarkan...`;
+
+      const scriptUrl = APP_SCRIPT_URL || localStorage.getItem(STORAGE_KEY_SCRIPT_URL) || "";
+      if (scriptUrl) {
+        try {
+          await fetch(scriptUrl, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              action: "register_kta",
+              noKta,
+              namaLengkap: nama,
+              namaRanting: ranting
+            })
+          });
+        } catch (e) {
+          console.warn("Gagal sinkron KTA ke online:", e);
+        }
+      }
+
+      btn.disabled = false;
+      btn.innerHTML = `<span>Daftarkan Nomor KTA</span>`;
+
+      showToast("Pendaftaran KTA Berhasil! Silakan Login sekarang.", "success");
+      switchAuthTab('peserta');
+      document.getElementById("inputPesertaKta").value = noKta;
+    }
+
+    function updateUserUI() {
+      const dot = document.getElementById("userStatusDot");
+      const roleText = document.getElementById("userRoleText");
+      const nameText = document.getElementById("userNameText");
+      const btnLabel = document.getElementById("authBtnLabel");
+      const lockBadge = document.getElementById("tabLockBadge");
+      const formEl = document.getElementById("judgingForm");
+      const guardEl = document.getElementById("juryAccessDenied");
+      const printBtn = document.getElementById("btnPrintRekap");
+
+      if (currentUser.isLoggedIn) {
+        btnLabel.innerText = "Keluar (Logout)";
+        if (currentUser.role === 'juri') {
+          dot.className = "w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse";
+          roleText.innerText = "DEWAN JURI AKTIF";
+          roleText.className = "font-bold text-emerald-300 block leading-tight";
+          nameText.innerText = currentUser.name;
+          lockBadge.className = "ml-1 text-[10px] bg-emerald-800 px-2 py-0.5 rounded-full text-white font-bold";
+          lockBadge.innerHTML = '<i class="fa-solid fa-unlock mr-0.5"></i> Terbuka';
+          
+          formEl.classList.remove("hidden");
+          guardEl.classList.add("hidden");
+
+          // Tampilkan tombol Cetak Rekap khusus mode Juri / Admin
+          if (printBtn) printBtn.classList.remove("hidden");
+        } else {
+          // Peserta
+          dot.className = "w-2.5 h-2.5 rounded-full bg-blue-400";
+          roleText.innerText = "PESERTA (KTA: " + currentUser.kta + ")";
+          roleText.className = "font-bold text-blue-300 block leading-tight";
+          nameText.innerText = currentUser.name + " (" + currentUser.ranting + ")";
+          lockBadge.className = "ml-1 text-[10px] bg-red-950/80 px-2 py-0.5 rounded-full text-amber-300 font-bold";
+          lockBadge.innerHTML = '<i class="fa-solid fa-lock mr-0.5"></i> Khusus Juri';
+
+          formEl.classList.add("hidden");
+          guardEl.classList.remove("hidden");
+
+          // Sembunyikan tombol Cetak Rekap dari Peserta
+          if (printBtn) printBtn.classList.add("hidden");
+        }
+      } else {
+        dot.className = "w-2.5 h-2.5 rounded-full bg-slate-400";
+        roleText.innerText = "Tamu (Belum Login)";
+        roleText.className = "font-bold text-amber-300 block leading-tight";
+        nameText.innerText = "Silakan login untuk akses";
+        btnLabel.innerText = "Masuk Sistem";
+        lockBadge.className = "ml-1 text-[10px] bg-red-950/80 px-2 py-0.5 rounded-full text-amber-300 font-bold";
+        lockBadge.innerHTML = '<i class="fa-solid fa-lock mr-0.5"></i> Khusus Juri';
+
+        formEl.classList.add("hidden");
+        guardEl.classList.remove("hidden");
+
+        // Sembunyikan tombol Cetak Rekap dari Tamu
+        if (printBtn) printBtn.classList.add("hidden");
+      }
+    }
+
+    // Tab Navigation
+    function switchTab(tab) {
+      const viewForm = document.getElementById("viewForm");
+      const viewRekap = document.getElementById("viewRekap");
+      const btnForm = document.getElementById("tabBtnForm");
+      const btnRekap = document.getElementById("tabBtnRekap");
+
+      if (tab === 'form') {
+        if (!currentUser.isLoggedIn || currentUser.role !== 'juri') {
+          showToast("Form penilaian hanya bisa diakses setelah login sebagai Dewan Juri!", "error");
+          openLoginModal('juri');
+        }
+        viewForm.classList.remove("hidden");
+        viewRekap.classList.add("hidden");
+        btnForm.className = "flex items-center gap-2 px-6 py-3 text-sm font-bold border-b-4 border-amber-400 text-white bg-white/10 rounded-t-xl transition";
+        btnRekap.className = "flex items-center gap-2 px-6 py-3 text-sm font-bold border-b-4 border-transparent text-red-200 hover:text-white hover:bg-white/5 rounded-t-xl transition";
+      } else {
+        viewForm.classList.add("hidden");
+        viewRekap.classList.remove("hidden");
+        btnRekap.className = "flex items-center gap-2 px-6 py-3 text-sm font-bold border-b-4 border-amber-400 text-white bg-white/10 rounded-t-xl transition";
+        btnForm.className = "flex items-center gap-2 px-6 py-3 text-sm font-bold border-b-4 border-transparent text-red-200 hover:text-white hover:bg-white/5 rounded-t-xl transition";
+        fetchRealtimeRekap();
+      }
+    }
+
+    function syncScore(id, val) {
+      let numVal = parseFloat(val);
+      const maxVal = CRITERIA_CONFIG[id].max;
+
+      if (isNaN(numVal) || numVal < 0) numVal = 0;
+      if (numVal > maxVal) numVal = maxVal;
+
+      document.getElementById(`num_${id}`).value = numVal;
+      document.getElementById(`rng_${id}`).value = numVal;
+
+      calculateTotals();
+    }
+
+    function calculateTotals() {
+      let sumA = 0;
+      ['a1','a2','a3','a4','a5','a6','a7'].forEach(key => {
+        sumA += parseFloat(document.getElementById(`num_${key}`).value || 0);
+      });
+
+      let sumB = 0;
+      ['b1','b2','b3','b4','b5'].forEach(key => {
+        sumB += parseFloat(document.getElementById(`num_${key}`).value || 0);
+      });
+
+      const grand = sumA + sumB;
+
+      document.getElementById("subtotalA").innerText = sumA.toFixed(1);
+      document.getElementById("subtotalB").innerText = sumB.toFixed(1);
+      document.getElementById("summaryA").innerText = sumA.toFixed(1);
+      document.getElementById("summaryB").innerText = sumB.toFixed(1);
+      document.getElementById("grandTotal").innerText = grand.toFixed(1);
+
+      return { sumA, sumB, grand };
+    }
+
+    function showToast(message, type = "info") {
+      const container = document.getElementById("toastContainer");
+      const toast = document.createElement("div");
+
+      let bg = "bg-slate-800 text-white";
+      let icon = '<i class="fa-solid fa-circle-info mr-2"></i>';
+
+      if (type === "success") {
+        bg = "bg-emerald-600 text-white";
+        icon = '<i class="fa-solid fa-circle-check mr-2"></i>';
+      } else if (type === "error") {
+        bg = "bg-red-600 text-white";
+        icon = '<i class="fa-solid fa-triangle-exclamation mr-2"></i>';
+      }
+
+      toast.className = `${bg} px-4 py-3 rounded-xl shadow-xl flex items-center text-xs font-semibold transform transition-all duration-300 pointer-events-auto`;
+      toast.innerHTML = `${icon}<span>${message}</span>`;
+
+      container.appendChild(toast);
+
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(-10px)';
+        setTimeout(() => toast.remove(), 300);
+      }, 4000);
+    }
+
+    function resetFormConfirmation() {
+      const modal = document.createElement("div");
+      modal.className = "fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4";
+      modal.innerHTML = `
+        <div class="bg-white rounded-2xl p-6 max-w-sm w-full text-center shadow-2xl">
+          <h4 class="font-bold text-slate-800 text-base mb-2">Reset Formulir Penilaian?</h4>
+          <p class="text-xs text-slate-500 mb-4">Nilai kriteria akan kembali ke setelan default.</p>
+          <div class="flex gap-2">
+            <button id="cancelResetBtn" class="flex-1 py-2 rounded-lg border border-slate-300 text-slate-600 text-xs font-bold">Batal</button>
+            <button id="confirmResetBtn" class="flex-1 py-2 rounded-lg bg-red-600 text-white text-xs font-bold">Ya, Reset</button>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(modal);
+
+      modal.querySelector("#cancelResetBtn").onclick = () => modal.remove();
+      modal.querySelector("#confirmResetBtn").onclick = () => {
+        doReset();
+        modal.remove();
+      };
+    }
+
+    function doReset() {
+      document.getElementById("judulVideo").value = "";
+      document.getElementById("catatanJuri").value = "";
+      
+      syncScore('a1', 4.0);
+      syncScore('a2', 8.0);
+      syncScore('a3', 8.5);
+      syncScore('a4', 8.0);
+      syncScore('a5', 8.5);
+      syncScore('a6', 9.0);
+      syncScore('a7', 4.0);
+
+      syncScore('b1', 8.0);
+      syncScore('b2', 6.5);
+      syncScore('b3', 5.0);
+      syncScore('b4', 6.5);
+      syncScore('b5', 7.0);
+
+      showToast("Formulir telah di-reset.", "info");
+    }
+
+    async function handleSubmit(event) {
+      event.preventDefault();
+
+      if (!currentUser.isLoggedIn || currentUser.role !== 'juri') {
+        showToast("Hanya Dewan Juri terautentikasi yang berhak mengirim nilai!", "error");
+        openLoginModal('juri');
+        return;
+      }
+
+      const namaJuri = document.getElementById("namaJuri").value.trim();
+      const namaRanting = document.getElementById("namaRanting").value;
+      const judulVideo = document.getElementById("judulVideo").value.trim();
+      const catatanJuri = document.getElementById("catatanJuri").value.trim();
+
+      if (!namaJuri || !namaRanting) {
+        showToast("Mohon isi Nama Juri dan pilih Ranting yang dinilai!", "error");
+        return;
+      }
+
+      const totals = calculateTotals();
+
+      const payload = {
+        timestamp: new Date().toISOString(),
+        namaJuri,
+        namaRanting,
+        judulVideo: judulVideo || "-",
+        a1_perencanaan: parseFloat(document.getElementById("num_a1").value),
+        a2_mindful: parseFloat(document.getElementById("num_a2").value),
+        a3_meaningful: parseFloat(document.getElementById("num_a3").value),
+        a4_joyful: parseFloat(document.getElementById("num_a4").value),
+        a5_interaktivitas: parseFloat(document.getElementById("num_a5").value),
+        a6_inovasi: parseFloat(document.getElementById("num_a6").value),
+        a7_refleksi: parseFloat(document.getElementById("num_a7").value),
+        subtotal_pembelajaran: totals.sumA,
+        b1_visual: parseFloat(document.getElementById("num_b1").value),
+        b2_audio: parseFloat(document.getElementById("num_b2").value),
+        b3_lighting: parseFloat(document.getElementById("num_b3").value),
+        b4_editing: parseFloat(document.getElementById("num_b4").value),
+        b5_kreativitas: parseFloat(document.getElementById("num_b5").value),
+        subtotal_video: totals.sumB,
+        total_skor: totals.grand,
+        catatan: catatanJuri || "-"
+      };
+
+      const submitBtn = document.getElementById("submitBtn");
+      const originalText = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> <span>Menyimpan ke Server...</span>`;
+
+      // Tambahkan ke cache lokal untuk simulasi langsung bila offline
+      cachedSubmissions.push(payload);
+
+      const scriptUrl = APP_SCRIPT_URL || localStorage.getItem(STORAGE_KEY_SCRIPT_URL) || "";
+
+      if (!scriptUrl) {
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+          openSuccessModal(payload, false);
+        }, 600);
+        return;
+      }
+
+      try {
+        await fetch(scriptUrl, {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+        openSuccessModal(payload, true);
+
+      } catch (err) {
+        console.error("Gagal mengirim data:", err);
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+        showToast("Terjadi kendala jaringan saat mengirim ke server.", "error");
+      }
+    }
+
+    function openSuccessModal(data, isOnline) {
+      document.getElementById("resJuri").innerText = data.namaJuri;
+      document.getElementById("resRanting").innerText = data.namaRanting;
+      document.getElementById("resSkor").innerText = `${data.total_skor} Poin (Pembelajaran: ${data.subtotal_pembelajaran}, Video: ${data.subtotal_video})`;
+
+      const modalMsg = document.getElementById("modalSuccessMsg");
+      modalMsg.innerText = "Data penilaian telah berhasil tersimpan ke sistem pusat!";
+
+      document.getElementById("modalSuccess").classList.remove("hidden");
+    }
+
+    function closeModalAndReset() {
+      document.getElementById("modalSuccess").classList.add("hidden");
+      document.getElementById("judulVideo").value = "";
+      document.getElementById("catatanJuri").value = "";
+      calculateTotals();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function closeModalAndGoRekap() {
+      document.getElementById("modalSuccess").classList.add("hidden");
+      switchTab('rekap');
+    }
+
+    // ==========================================
+    // REKAPITULASI DARI 2 JURI (REALTIME)
+    // ==========================================
+    async function fetchRealtimeRekap() {
+      const refreshIcon = document.getElementById("refreshIcon");
+      refreshIcon.classList.add("fa-spin");
+
+      const scriptUrl = APP_SCRIPT_URL || localStorage.getItem(STORAGE_KEY_SCRIPT_URL) || "";
+
+      if (scriptUrl) {
+        try {
+          const resp = await fetch(scriptUrl);
+          const resJson = await resp.json();
+          if (resJson) {
+            if (resJson.peserta && resJson.peserta.length > 0) {
+              // Sinkronkan daftar KTA yang terdaftar di spreadsheet
+              registeredKtaList = resJson.peserta;
+              localStorage.setItem(STORAGE_KEY_KTA, JSON.stringify(registeredKtaList));
+            }
+            if (resJson.data) {
+              processAndRenderRekap(resJson.data);
+              showToast("Data rekapitulasi berhasil diperbarui!", "success");
+            }
+          }
+        } catch (err) {
+          console.warn("Gagal fetch GET dari server, menampilkan data sesi:", err);
+          processAndRenderRekap(cachedSubmissions);
+          showToast("Menampilkan akumulasi sesi lokal.", "info");
+        }
+      } else {
+        processAndRenderRekap(cachedSubmissions);
+      }
+
+      refreshIcon.classList.remove("fa-spin");
+    }
+
+    function processAndRenderRekap(rawList) {
+      // Kelompokkan data penilaian berdasarkan nama ranting
+      const rantingMap = {};
+      LIST_RANTING.forEach(r => {
+        rantingMap[r] = {
+          namaRanting: r,
+          juri1: null,
+          juri2: null,
+          juri1_score: null,
+          juri2_score: null,
+          pembelajaran_avg: 0,
+          video_avg: 0,
+          total_avg: 0,
+          judgedCount: 0,
+          catatanList: []
+        };
+      });
+
+      // Iterasi data mentah yang didapat
+      rawList.forEach(entry => {
+        const rantingName = entry.namaRanting;
+        if (!rantingMap[rantingName]) {
+          rantingMap[rantingName] = {
+            namaRanting: rantingName,
+            juri1: null,
+            juri2: null,
+            juri1_score: null,
+            juri2_score: null,
+            pembelajaran_avg: 0,
+            video_avg: 0,
+            total_avg: 0,
+            judgedCount: 0,
+            catatanList: []
+          };
+        }
+
+        const item = rantingMap[rantingName];
+        const score = parseFloat(entry.totalSkor || entry.total_skor || 0);
+
+        if (item.juri1_score === null) {
+          item.juri1 = entry.namaJuri;
+          item.juri1_score = score;
+          item.judgedCount++;
+        } else if (item.juri2_score === null) {
+          item.juri2 = entry.namaJuri;
+          item.juri2_score = score;
+          item.judgedCount++;
+        }
+
+        if (entry.catatan && entry.catatan !== "-") {
+          item.catatanList.push(`${entry.namaJuri}: "${entry.catatan}"`);
+        }
+      });
+
+      // Hitung rata-rata skor
+      const summaryList = Object.values(rantingMap).map(item => {
+        let avg = 0;
+        if (item.juri1_score !== null && item.juri2_score !== null) {
+          avg = (item.juri1_score + item.juri2_score) / 2;
+        } else if (item.juri1_score !== null) {
+          avg = item.juri1_score;
+        } else if (item.juri2_score !== null) {
+          avg = item.juri2_score;
+        }
+        item.total_avg = avg;
+        return item;
+      });
+
+      // Urutkan peringkat berdasarkan total_avg tertinggi
+      summaryList.sort((a, b) => b.total_avg - a.total_avg);
+
+      // Render Podium Juara 1, 2, 3
+      renderPodium(summaryList);
+
+      // Render Tabel Lengkap
+      renderTable(summaryList);
+
+      // Render Log Masuk
+      renderLog(rawList);
+    }
+
+    function renderPodium(sortedList) {
+      const podium = document.getElementById("podiumArea");
+      const top3 = sortedList.slice(0, 3);
+
+      const badges = [
+        { title: "JUARA I", color: "bg-amber-500", text: "text-amber-900", icon: "fa-crown", border: "border-amber-300" },
+        { title: "JUARA II", color: "bg-slate-400", text: "text-slate-900", icon: "fa-medal", border: "border-slate-300" },
+        { title: "JUARA III", color: "bg-amber-700", text: "text-amber-900", icon: "fa-award", border: "border-amber-600" }
+      ];
+
+      podium.innerHTML = top3.map((item, idx) => {
+        const b = badges[idx];
+        const hasScore = item.total_avg > 0;
+        return `
+          <div class="bg-white rounded-2xl p-5 shadow-sm border ${b.border} relative overflow-hidden flex flex-col justify-between">
+            <div class="flex items-center justify-between mb-3">
+              <span class="px-2.5 py-1 ${b.color} text-white rounded-lg text-[11px] font-black uppercase tracking-wider flex items-center gap-1.5 shadow-sm">
+                <i class="fa-solid ${b.icon}"></i> ${b.title}
+              </span>
+              <span class="text-xs text-slate-400 font-bold">${item.judgedCount}/2 Juri</span>
+            </div>
+            
+            <h4 class="font-extrabold text-base text-slate-900 mb-1">${item.namaRanting}</h4>
+            <div class="mt-2 pt-3 border-t border-slate-100 flex items-baseline justify-between">
+              <span class="text-xs text-slate-500 font-semibold">Skor Rata-rata:</span>
+              <span class="text-2xl font-black text-red-600">${hasScore ? item.total_avg.toFixed(1) : '-'}</span>
+            </div>
+
+            <div class="mt-2 text-[11px] text-slate-400">
+              Juri 1: <strong>${item.juri1_score !== null ? item.juri1_score.toFixed(1) : '-'}</strong> | 
+              Juri 2: <strong>${item.juri2_score !== null ? item.juri2_score.toFixed(1) : '-'}</strong>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderTable(sortedList) {
+      const tbody = document.getElementById("tableRekapBody");
+      
+      if (sortedList.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="7" class="py-8 text-center text-slate-400">Belum ada data nilai yang masuk.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = sortedList.map((item, idx) => {
+        const rank = idx + 1;
+        let rankBadge = `<span class="font-bold text-slate-700">#${rank}</span>`;
+        let juaraBadge = `<span class="text-slate-400 text-xs">-</span>`;
+
+        if (rank === 1 && item.total_avg > 0) {
+          rankBadge = `<span class="w-6 h-6 inline-flex items-center justify-center rounded-full bg-amber-400 text-slate-900 font-black text-xs">1</span>`;
+          juaraBadge = `<span class="px-2 py-0.5 rounded-full text-xs font-bold bg-amber-100 text-amber-800 border border-amber-300">Juara 1</span>`;
+        } else if (rank === 2 && item.total_avg > 0) {
+          rankBadge = `<span class="w-6 h-6 inline-flex items-center justify-center rounded-full bg-slate-300 text-slate-800 font-black text-xs">2</span>`;
+          juaraBadge = `<span class="px-2 py-0.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700 border border-slate-300">Juara 2</span>`;
+        } else if (rank === 3 && item.total_avg > 0) {
+          rankBadge = `<span class="w-6 h-6 inline-flex items-center justify-center rounded-full bg-amber-600 text-white font-black text-xs">3</span>`;
+          juaraBadge = `<span class="px-2 py-0.5 rounded-full text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200">Juara 3</span>`;
+        } else if (rank <= 6 && item.total_avg > 0) {
+          juaraBadge = `<span class="px-2 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-600">Harapan ${rank-3}</span>`;
+        }
+
+        let statusJuri = `<span class="text-[11px] px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-medium">1 Juri (${item.judgedCount}/2)</span>`;
+        if (item.judgedCount >= 2) {
+          statusJuri = `<span class="text-[11px] px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold"><i class="fa-solid fa-check-double mr-1"></i>Lengkap (2/2)</span>`;
+        } else if (item.judgedCount === 0) {
+          statusJuri = `<span class="text-[11px] px-2 py-0.5 rounded bg-slate-100 text-slate-400">Belum dinilai</span>`;
+        }
+
+        return `
+          <tr class="hover:bg-slate-50/80 transition">
+            <td class="py-3 px-4 text-center">${rankBadge}</td>
+            <td class="py-3 px-4 font-bold text-slate-800">${item.namaRanting}</td>
+            <td class="py-3 px-3 text-center font-semibold text-slate-700">${item.juri1_score !== null ? item.juri1_score.toFixed(1) : '<span class="text-slate-300">-</span>'}</td>
+            <td class="py-3 px-3 text-center font-semibold text-slate-700">${item.juri2_score !== null ? item.juri2_score.toFixed(1) : '<span class="text-slate-300">-</span>'}</td>
+            <td class="py-3 px-3 text-center font-black text-red-600 text-base">${item.total_avg > 0 ? item.total_avg.toFixed(1) : '<span class="text-slate-300">-</span>'}</td>
+            <td class="py-3 px-4 text-center">${statusJuri}</td>
+            <td class="py-3 px-4 text-center">${juaraBadge}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function renderLog(rawList) {
+      const logArea = document.getElementById("logEntries");
+      if (!rawList || rawList.length === 0) {
+        logArea.innerHTML = `<p class="text-slate-400 italic">Belum ada penilaian yang tersimpan.</p>`;
+        return;
+      }
+
+      // Ambil 8 log terakhir
+      const reversed = [...rawList].reverse().slice(0, 8);
+      logArea.innerHTML = reversed.map(log => {
+        return `
+          <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-xl border border-slate-100 text-xs">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              <span class="font-bold text-slate-800">${log.namaJuri}</span>
+              <span class="text-slate-400">menilai</span>
+              <span class="font-bold text-red-700">${log.namaRanting}</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="font-black text-slate-900">${parseFloat(log.totalSkor || log.total_skor || 0).toFixed(1)} Poin</span>
+              <span class="text-slate-400 text-[10px]">${log.timestamp || 'Baru saja'}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+  </script>
+</body>
+</html>
