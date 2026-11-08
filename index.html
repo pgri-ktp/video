@@ -581,13 +581,11 @@
               <select id="namaRanting" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm font-semibold text-slate-800 focus:ring-2 focus:ring-red-500 focus:bg-white focus:outline-none transition">
                 <option value="">-- Pilih Ranting PGRI --</option>
                 <option value="Cilampeni-Katapang">Cilampeni-Katapang</option>
-                <option value="Gandasari-Banyusari">Gandasari-Banyusari</option>
                 <option value="Sukamukti">Sukamukti</option>
                 <option value="Pangauban">Pangauban</option>
                 <option value="Sangkanhurip">Sangkanhurip</option>
                 <option value="SMPN 1 Katapang">SMPN 1 Katapang</option>
                 <option value="SMPN 2 Katapang">SMPN 2 Katapang</option>
-                <option value="SMPN 3 Katapang">SMPN 3 Katapang</option>
                 <option value="IGTKI">IGTKI</option>
               </select>
             </div>
@@ -1015,7 +1013,7 @@
               <i class="fa-solid fa-table-list text-red-600"></i> Tabel Peringkat Seluruh Ranting PGRI Katapang
             </h3>
             <span id="rekapCountBadge" class="text-xs bg-slate-100 text-slate-700 font-bold px-2.5 py-1 rounded-lg">
-              9 Ranting Terdaftar
+              7 Ranting Terdaftar
             </span>
           </div>
 
@@ -1206,13 +1204,11 @@
               <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Asal Ranting PGRI <span class="text-red-500">*</span></label>
               <select id="regNamaRanting" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
                 <option value="Cilampeni-Katapang">Cilampeni-Katapang</option>
-                <option value="Gandasari-Banyusari">Gandasari-Banyusari</option>
                 <option value="Sukamukti">Sukamukti</option>
                 <option value="Pangauban">Pangauban</option>
                 <option value="Sangkanhurip">Sangkanhurip</option>
                 <option value="SMPN 1 Katapang">SMPN 1 Katapang</option>
                 <option value="SMPN 2 Katapang">SMPN 2 Katapang</option>
-                <option value="SMPN 3 Katapang">SMPN 3 Katapang</option>
                 <option value="IGTKI">IGTKI</option>
               </select>
             </div>
@@ -1266,16 +1262,14 @@
     // Daftar KTA terdaftar (lokal cache & synced dari spreadsheet)
     let registeredKtaList = [];
 
-    // Daftar 9 Ranting Resmi Sesuai Arahan Panitia
+    // Daftar 7 Ranting Resmi Sesuai Arahan Panitia
     const LIST_RANTING = [
       "Cilampeni-Katapang",
-      "Gandasari-Banyusari",
       "Sukamukti",
       "Pangauban",
       "Sangkanhurip",
       "SMPN 1 Katapang",
       "SMPN 2 Katapang",
-      "SMPN 3 Katapang",
       "IGTKI"
     ];
 
