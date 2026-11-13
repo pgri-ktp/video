@@ -1155,6 +1155,15 @@
             <p class="text-xs text-slate-500">Masukkan Nomor KTA PGRI Anda yang telah terdaftar.</p>
           </div>
 
+          <!-- Banner Peringatan Jadwal Login Peserta -->
+          <div id="pesertaLoginNotice" class="p-3 bg-red-50 border border-red-300 rounded-xl text-xs text-red-900 flex items-start gap-2.5">
+            <i class="fa-solid fa-lock text-red-600 text-base mt-0.5 shrink-0"></i>
+            <div>
+              <strong class="block font-bold">Login Peserta Belum Dibuka!</strong>
+              <span>Pendaftaran KTA dan Login Peserta baru dapat dilakukan mulai tanggal <strong class="text-red-700 underline font-black">15 November 2026 pukul 10.00 WIB</strong>.</span>
+            </div>
+          </div>
+
           <div>
             <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Nomor KTA PGRI</label>
             <div class="relative">
@@ -1165,7 +1174,7 @@
             <p class="text-[11px] text-slate-500 mt-1">Belum punya akun? <a href="javascript:void(0)" onclick="switchAuthTab('daftar')" class="text-emerald-600 font-bold hover:underline">Daftarkan KTA di sini</a>.</p>
           </div>
 
-          <button onclick="processPesertaLogin()" 
+          <button id="btnLoginPeserta" onclick="processPesertaLogin()" 
             class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs shadow-md transition">
             Masuk Sebagai Peserta
           </button>
@@ -1183,7 +1192,7 @@
             <i class="fa-solid fa-calendar-xmark text-amber-600 text-base mt-0.5 shrink-0"></i>
             <div>
               <strong class="block font-bold">Pendaftaran Belum Dibuka!</strong>
-              <span>Pendaftaran peserta lomba baru bisa dilakukan mulai tanggal <strong class="text-red-700">15 November 2026</strong>. Sebelum tanggal tersebut, peserta hanya dapat melihat dokumen Petunjuk Teknis.</span>
+              <span>Pendaftaran peserta lomba baru bisa dilakukan mulai tanggal <strong class="text-red-700">15 November 2026 pukul 10.00 WIB</strong>. Sebelum waktu tersebut, peserta hanya dapat melihat dokumen Petunjuk Teknis.</span>
             </div>
           </div>
 
@@ -1243,8 +1252,8 @@
     // URL Web App Google Apps Script tersimpan langsung di dalam kode aplikasi (tanpa link spreadsheet publik)
     const APP_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyusc54zYLfktZotawetWZxVyawQafdQYSWUos6GulA1518HpzP7Cdhz9D4wVkpGG9wvQ/exec"; 
 
-    // Batas Waktu Pembukaan Pendaftaran: 15 November 2026 Pukul 00:00:00 WIB
-    const REGISTRATION_START_DATE = new Date("2026-11-15T00:00:00+07:00");
+    // Batas Waktu Pembukaan Pendaftaran & Login Peserta: 15 November 2026 Pukul 10:00:00 WIB
+    const REGISTRATION_START_DATE = new Date("2026-11-15T10:00:00+07:00");
 
     function isRegistrationOpen() {
       return new Date() >= REGISTRATION_START_DATE;
@@ -1332,6 +1341,11 @@
         document.getElementById("regNamaRanting")
       ];
 
+      // Elemen Panel Login Peserta
+      const loginNoticeBox = document.getElementById("pesertaLoginNotice");
+      const inputPesertaKta = document.getElementById("inputPesertaKta");
+      const btnLoginPeserta = document.getElementById("btnLoginPeserta");
+
       if (!open) {
         if (noticeBox) {
           noticeBox.className = "p-3.5 bg-red-50 border border-red-300 rounded-xl text-xs text-red-900 flex items-start gap-2.5";
@@ -1339,14 +1353,14 @@
             <i class="fa-solid fa-lock text-red-600 text-base mt-0.5 shrink-0"></i>
             <div>
               <strong class="block font-bold">Pendaftaran Peserta Ditutup!</strong>
-              <span>Akses pendaftaran ditolak. Pendaftaran peserta lomba baru bisa dilakukan mulai tanggal <strong class="text-red-700 underline font-black">15 November 2026</strong>. Saat ini peserta hanya dapat melihat dokumen <strong>Petunjuk Teknis</strong>.</span>
+              <span>Akses pendaftaran ditolak. Pendaftaran peserta baru bisa dilakukan mulai tanggal <strong class="text-red-700 underline font-black">15 November 2026 pukul 10.00 WIB</strong>. Saat ini peserta hanya dapat melihat dokumen <strong>Petunjuk Teknis</strong>.</span>
             </div>
           `;
         }
         if (btnDaftar) {
           btnDaftar.disabled = true;
           btnDaftar.className = "w-full py-2.5 bg-slate-300 text-slate-500 font-bold rounded-xl text-xs cursor-not-allowed flex items-center justify-center gap-2";
-          btnDaftar.innerHTML = `<i class="fa-solid fa-lock"></i> <span>Pendaftaran Dibuka 15 November 2026</span>`;
+          btnDaftar.innerHTML = `<i class="fa-solid fa-lock"></i> <span>Dibuka 15 Nov 2026 Pukul 10.00 WIB</span>`;
         }
         regInputs.forEach(input => {
           if (input) {
@@ -1354,6 +1368,20 @@
             input.classList.add("bg-slate-200", "cursor-not-allowed");
           }
         });
+
+        // Kunci Login Peserta sebelum jadwal buka
+        if (loginNoticeBox) {
+          loginNoticeBox.classList.remove("hidden");
+        }
+        if (inputPesertaKta) {
+          inputPesertaKta.disabled = true;
+          inputPesertaKta.classList.add("bg-slate-200", "cursor-not-allowed");
+        }
+        if (btnLoginPeserta) {
+          btnLoginPeserta.disabled = true;
+          btnLoginPeserta.className = "w-full py-2.5 bg-slate-300 text-slate-500 font-bold rounded-xl text-xs cursor-not-allowed flex items-center justify-center gap-2";
+          btnLoginPeserta.innerHTML = `<i class="fa-solid fa-lock"></i> <span>Login Dibuka 15 Nov 2026 Pukul 10.00 WIB</span>`;
+        }
       } else {
         if (noticeBox) {
           noticeBox.className = "p-3 bg-emerald-50 border border-emerald-300 rounded-xl text-xs text-emerald-800 flex items-center gap-2";
@@ -1370,6 +1398,20 @@
             input.classList.remove("bg-slate-200", "cursor-not-allowed");
           }
         });
+
+        // Buka Login Peserta setelah jadwal buka
+        if (loginNoticeBox) {
+          loginNoticeBox.classList.add("hidden");
+        }
+        if (inputPesertaKta) {
+          inputPesertaKta.disabled = false;
+          inputPesertaKta.classList.remove("bg-slate-200", "cursor-not-allowed");
+        }
+        if (btnLoginPeserta) {
+          btnLoginPeserta.disabled = false;
+          btnLoginPeserta.className = "w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs shadow-md transition";
+          btnLoginPeserta.innerHTML = `Masuk Sebagai Peserta`;
+        }
       }
     }
 
@@ -1469,8 +1511,8 @@
     }
 
     function processPesertaLogin() {
-      if (!isRegistrationOpen() && registeredKtaList.length === 0) {
-        showToast("Pendaftaran peserta baru dibuka mulai tanggal 15 November 2026. Anda saat ini hanya dapat membaca Petunjuk Teknis.", "error");
+      if (!isRegistrationOpen()) {
+        showToast("Akses ditolak! Pendaftaran KTA dan Login Peserta baru dibuka mulai tanggal 15 November 2026 pukul 10.00 WIB.", "error");
         return;
       }
 
@@ -1497,20 +1539,16 @@
         switchTab('rekap');
         showToast(`Selamat datang, ${found.nama} (${found.ranting})!`, "success");
       } else {
-        if (!isRegistrationOpen()) {
-          showToast("Nomor KTA belum terdaftar. Pendaftaran KTA peserta baru dibuka mulai tanggal 15 November 2026!", "error");
-        } else {
-          showToast("Nomor KTA belum terdaftar! Silakan daftarkan KTA terlebih dahulu.", "error");
-          switchAuthTab('daftar');
-          document.getElementById("regNoKta").value = noKta;
-        }
+        showToast("Nomor KTA belum terdaftar! Silakan daftarkan KTA terlebih dahulu.", "error");
+        switchAuthTab('daftar');
+        document.getElementById("regNoKta").value = noKta;
       }
     }
 
     async function processDaftarKta() {
       // Validasi waktu pendaftaran
       if (!isRegistrationOpen()) {
-        showToast("Pendaftaran ditolak! Pendaftaran peserta baru bisa dilakukan mulai tanggal 15 November 2026.", "error");
+        showToast("Pendaftaran ditolak! Pendaftaran peserta baru bisa dilakukan mulai tanggal 15 November 2026 pukul 10.00 WIB.", "error");
         return;
       }
 
